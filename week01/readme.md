@@ -3,7 +3,7 @@
 ## 梯度下降法的Python实现
 参考代码，自己就一些细节进行优化
 https://www.cnblogs.com/focusonepoint/p/6394339.html
-```
+```Python
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 

@@ -1095,12 +1095,12 @@ body .markdown-body
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1"># 得到x的转置</span>
     <span class="c1"># 即 x的第一行为x1 第二行为x2 第三行全部初始化为1</span>
-    <span class="n">xTrains</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="kp">transpose</span><span class="p">()</span>
+    <span class="n">xTrains</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
     <span class="c1"># theta 是一个列向量</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">maxIteration</span><span class="p">):</span>
         <span class="c1"># x矩阵(10*3)与theta(3*1)矩阵相乘</span>
         <span class="c1"># hypothesis(i) = x1(i)*theta1(i) + x2(i)*theta2(2) + 1*theta0(i)</span>
-        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
         <span class="c1"># 作差</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">hypothesis</span> <span class="o">-</span> <span class="n">y</span>
         <span class="c1"># 当loss的范数在我们的误差允许范围内 就停止循环</span>
@@ -1108,15 +1108,15 @@ body .markdown-body
             <span class="k">break</span>
         <span class="c1"># xTrains (3*10) * loss(10*1) = gradient(3*1)</span>
         <span class="c1"># 计算代价函数</span>
-        <span class="kp">gradient</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="kp">dot</span><span class="p">(</span><span class="n">xTrains</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="kp">gradient</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xTrains</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">gradient</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&#39;the number of iteration is </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">);</span>
     <span class="k">return</span> <span class="n">theta</span>
 
 
 <span class="c1"># define the prepared 训练集</span>
 <span class="c1"># the meaning of column : x1,x2,y</span>
-<span class="n">dataSet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">array</span><span class="p">([</span>
+<span class="n">dataSet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">],</span>
     <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">3.2</span><span class="p">],</span>
     <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">3.9</span><span class="p">],</span>
@@ -1131,16 +1131,16 @@ body .markdown-body
 
 
 <span class="c1"># print(dataSet)</span>
-<span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">shape</span><span class="p">(</span><span class="n">dataSet</span><span class="p">)</span>
+<span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataSet</span><span class="p">)</span>
 <span class="c1"># print(m,n)</span>
-<span class="n">trainData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">ones</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+<span class="n">trainData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
 <span class="c1"># 截取dataSet的前N-1列</span>
 <span class="n">trainData</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="c1"># 获取dataSet的最后一列</span>
 <span class="n">trainLabel</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># print(m,n)</span>
-<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="c1"># print(theta)</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.001</span>
 
@@ -1148,11 +1148,11 @@ body .markdown-body
 <span class="n">maxIteration</span> <span class="o">=</span> <span class="mi">10000000</span>
 <span class="n">theta</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">trainData</span><span class="p">,</span> <span class="n">trainLabel</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">maxIteration</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;thec value of theta is:&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="kp">round</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 
 
 <span class="c1"># a test for the algorithm</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">array</span><span class="p">([</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">],</span> 
     <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> 
     <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">],</span> 
@@ -1163,15 +1163,15 @@ body .markdown-body
 
 <span class="c1"># define a predict function used to test</span>
 <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
-    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">xTest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">ones</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">xTest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">xTest</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
-    <span class="n">yPre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">dot</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">yPre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">yPre</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">&#39;the predicted value is&#39;</span><span class="p">)</span>
 <span class="n">yP</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="kp">round</span><span class="p">(</span><span class="n">yP</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">yP</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 <br />
 运行结果<br />
