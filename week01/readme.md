@@ -226,4 +226,4 @@ the predicted value is
 [Finished in 0.2s]
 ```
 
-**由此可以知道，在特征矩阵维度不是太大情况下，对于线性回归模型，logistic regression 是一个优先选用的方法**
+**由此可以知道，在特征矩阵维度不是太大情况下，对于线性回归模型，normal equation 是一个优先选用的方法**
