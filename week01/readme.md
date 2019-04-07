@@ -2,6 +2,12 @@
 
 # 第一周机器学习
 
+
+>     本文公式需要使用Mathjax，然后令人悲伤的是github不支持Mathjax
+>     您可以将这篇md文件pull下来，使用您本地的markdown解析器解析
+>     没有必要在公示显示上浪费时间，您也可以下载我本地生成的html用浏览器打开即可
+*[Mathjax开源项目地址](https://github.com/mathjax/MathJax)*
+
 ## 梯度下降法的Python实现
 参考代码，自己就一些细节进行优化
 https://www.cnblogs.com/focusonepoint/p/6394339.html

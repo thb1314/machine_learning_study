@@ -1077,7 +1077,18 @@ body .markdown-body
 .codehilite .vi{color:teal}
 .codehilite .il{color:#009999}
 .codehilite .gc{color:#999;background-color:#EAF2F5}
-</style><title>readme</title></head><body><article class="markdown-body"><h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一周机器学习</h1>
+</style><title>readme</title></head><body><article class="markdown-body"><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一周机器学习</h1>
+<blockquote>
+<div class="codehilite"><pre>本文公式需要使用Mathjax，然后令人悲伤的是github不支持Mathjax
+您可以将这篇md文件pull下来，使用您本地的markdown解析器解析
+没有必要在公示显示上浪费时间，您也可以下载我本地生成的html用浏览器打开即可
+</pre></div>
+
+
+<p><em><a href="https://github.com/mathjax/MathJax">Mathjax开源项目地址</a></em></p>
+</blockquote>
 <h2 id="python"><a name="user-content-python" href="#python" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>梯度下降法的Python实现</h2>
 <p>参考代码，自己就一些细节进行优化<br />
 <a href="https://www.cnblogs.com/focusonepoint/p/6394339.html">https://www.cnblogs.com/focusonepoint/p/6394339.html</a><br />
@@ -1182,4 +1193,122 @@ the predicted value is
 [ 9.5 10.2 10.9 11.6 12.3]
 [Finished in 2.2s]
 </pre></div>
-</p></article></body></html>
+</p>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>优化技巧</h2>
+<ul>
+<li>Feature Scaling（特征缩放）</li>
+<li>多项式回归<ul>
+<li>$$h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2$$</li>
+<li>$$h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3$$</li>
+<li>$$h_\theta(x) = \theta_0 + \theta_1x + \theta_2\sqrt{x}$$</li>
+<li>上面的举例只是为了说明，x<sub>i</sub>的取值可以不是x的一次多项式，但是这里要注意的是特征缩放在这里显得尤为重要</li>
+</ul>
+</li>
+<li>α选取技巧<ul>
+<li>如果J（θ)的值随着θ的取值单调递增或者出现震荡，那么α应该选的小一点</li>
+</ul>
+</li>
+</ul>
+<h2 id="normal-equation"><a name="user-content-normal-equation" href="#normal-equation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Normal Equation（正规方程法）</h2>
+<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>思想</h3>
+<p>$$J\theta(x) = \frac{1}{2m}\sum_{i=1}^m{(h_\theta(x)-y)^2}$$<br />
+$$= a\theta^2 + b\theta + c$$</p>
+<p>微积分思想：求导后令导数为零解方程可以求出极值点θ<br />
+对于θ是一个n维向量的情况，可以利用多元函数取极值的必要条件，即偏导数为0</p>
+<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>结论</h3>
+<p>$$\theta = (X^TX)^{-1}X^Ty$$</p>
+<h4 id="note"><a name="user-content-note" href="#note" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Note</h4>
+<ol>
+<li>No need to do feature scaling</li>
+<li>只适用于线性模型，不适合逻辑回归模型等其他模型</li>
+<li>the pseudo inverse of matrix <ul>
+<li>redundant features (x中存在线性相关的量)</li>
+<li>too many features (eg. m &lt;= n 数据个数小于特征参数)</li>
+</ul>
+</li>
+</ol>
+<h3 id="code"><a name="user-content-code" href="#code" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Code</h3>
+<p>这里我使用上一个梯度下降法的例子作为对比,采用相同的数据对比运行结果</p>
+<p><div class="codehilite"><pre><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: UTF-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">normalEqation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    使用正规方程法算法计算theta</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># 得到x的转置</span>
+    <span class="n">xTrains</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1"># theta 为 n维列向量</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xTrains</span><span class="p">,</span><span class="n">x</span><span class="p">))</span> 
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">xTrains</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">theta</span>
+
+
+<span class="c1"># define the prepared 训练集</span>
+<span class="c1"># the meaning of column : x1,x2,y</span>
+<span class="n">dataSet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">3.2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">3.9</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.7</span><span class="p">,</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">4.6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">3.1</span><span class="p">,</span><span class="mf">5.3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">6.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">3.9</span><span class="p">,</span><span class="mf">6.7</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">4.3</span><span class="p">,</span><span class="mf">7.4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.7</span><span class="p">,</span><span class="mf">4.7</span><span class="p">,</span><span class="mf">8.1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.9</span><span class="p">,</span><span class="mf">5.1</span><span class="p">,</span><span class="mf">8.8</span><span class="p">],</span>
+<span class="p">])</span>
+
+
+<span class="c1"># print(dataSet)</span>
+<span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataSet</span><span class="p">)</span>
+<span class="c1"># print(m,n)</span>
+<span class="n">trainData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+<span class="c1"># 截取dataSet的前N-1列 </span>
+<span class="n">trainData</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># 获取dataSet的最后一列 </span>
+<span class="n">trainLabel</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">normalEqation</span><span class="p">(</span><span class="n">trainData</span><span class="p">,</span> <span class="n">trainLabel</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;thec value of theta is:&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+
+<span class="c1"># a test for the algorithm</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mf">3.9</span><span class="p">,</span> <span class="mf">7.1</span><span class="p">]</span>
+<span class="p">])</span>
+
+
+<span class="c1"># define a predict function used to test</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">xTest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">xTest</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">yPre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">yPre</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;the predicted value is&#39;</span><span class="p">)</span>
+<span class="n">yP</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">yP</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+<br />
+运行结果：<br />
+<div class="codehilite"><pre>thec value of theta is:
+[ 0.61  1.45 -0.34]
+the predicted value is
+[ 9.5 10.2 10.9 11.6 12.3]
+[Finished in 0.2s]
+</pre></div>
+</p>
+<p><strong>由此可以知道，在特征矩阵维度不是太大情况下，对于线性回归模型，normal equation 是一个优先选用的方法</strong></p></article></body></html>
