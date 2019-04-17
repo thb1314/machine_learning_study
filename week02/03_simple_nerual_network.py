@@ -31,11 +31,8 @@ class CifarData:
         for filename in filenames:
             data, labels = load_data(filename)
             for item, label in zip(data, labels):
-                # label一共有是个类别 每个类别各 5000各
-                # 使用该判断获取类别
-                if label in [0, 1]:
-                    all_data.append(item)
-                    all_labels.append(label)
+                all_data.append(item)
+                all_labels.append(label)
         # 关于 vstack函数
         # https://www.cnblogs.com/nkh222/p/8932369.html
         self._data = np.vstack(all_data)
