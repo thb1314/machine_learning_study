@@ -1,11 +1,6 @@
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
-        TeX: {
-            equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
-            extensions: ['extpfeil.js'],
-            Macros: {bm: "\\boldsymbol"}
-        },
+        tex2jax: { inlineMath: [['$','$'], ['$ ',' $']], processClass: 'math', processEscapes: true },
         'HTML-CSS': { linebreaks: { automatic: true } },
         SVG: { linebreaks: { automatic: true } }
         });
@@ -27,12 +22,13 @@ cost function:
 $$
 J(\theta) = \frac{1}{2}\sum_{i=1}^{m}(y^{(i)}-\theta^T x^{(i)})^2
 $$
-来源于假设误差\\( \varepsilon_i \\)服从正态分布，然后对参数\\( \theta \\)进行极大似然估计，经过运算后得出\\( J(\theta) \\)取最小时，似然函数最大，从而推出这个式子。  
-此外，对这个\\( J(\theta) \\)求偏导，令其偏导数为0（这里涉及到矩阵偏导数计算），即可得到正规方程(normal equation)。
+来源于假设误差 $  \varepsilon_i  $ 服从正态分布，然后对参数$  \theta  $进行极大似然估计，经过运算后得出$  J(\theta)  $取最小时，似然函数最大，从而推出这个式子。  
+此外，对这个$  J(\theta)  $求偏导，令其偏导数为0（这里涉及到矩阵偏导数计算），即可得到正规方程(normal equation)。
 
 ## 梯度下降法的Python实现
-参考代码，自己就一些细节进行优化
-https://www.cnblogs.com/focusonepoint/p/6394339.html
+参考代码，自己就一些细节进行优化  
+(https://www.cnblogs.com/focusonepoint/p/6394339.html)
+
 ```Python
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
@@ -142,14 +138,14 @@ the predicted value is
 - Feature Scaling（特征缩放）
 	- 归一化
 		1. 线性归一化
-			- $$ {x}' = \frac{x - \min(x)}{\max(x) - \min(x)} $$
+			- $  {x}' = \frac{x - \min(x)}{\max(x) - \min(x)}  $
 		2. 标准差归一化
-			- $$ x^* = \frac{x- \overline x}{s} $$
+			- $  x^* = \frac{x- \overline x}{s}  $
 		3. 非线性归一化
 - 多项式回归
-	- $$h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2$$
-	- $$h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3$$
-	- $$h_\theta(x) = \theta_0 + \theta_1x + \theta_2\sqrt{x}$$
+	- $ h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2 $
+	- $ h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3 $
+	- $ h_\theta(x) = \theta_0 + \theta_1x + \theta_2\sqrt{x} $
 	- 上面的举例只是为了说明，x<sub>i</sub>的取值可以不是x的一次多项式，但是这里要注意的是特征缩放在这里显得尤为重要
 - α选取技巧
 	- 如果J（θ)的值随着θ的取值单调递增或者出现震荡，那么α应该选的小一点
@@ -158,16 +154,20 @@ the predicted value is
 ## Normal Equation（正规方程法）
 
 ### 思想
-$$J\theta(x) = \frac{1}{2m}\sum_{i=1}^m{(h_\theta(x)-y)^2}$$
-$$= a\theta^2 + b\theta + c$$
+$$
+J_\theta(x) = \frac{1}{2m}\sum_{i=1}^m{(h_\theta(x)-y)^2} \\\\
+= a\theta^2 + b\theta + c
+$$
 
 微积分思想：求导后令导数为零解方程可以求出极值点θ  
 对于θ是一个n维向量的情况，可以利用多元函数取极值的必要条件，即偏导数为0
 
 ### 结论
-$$\theta = (X^TX)^{-1}X^Ty$$
+$$
+\theta = (X^TX)^{-1}X^Ty
+$$
 
-#### Note
+### Note
 1. No need to do feature scaling
 2. 只适用于线性模型，不适合逻辑回归模型等其他模型
 3. the pseudo inverse of matrix
@@ -267,13 +267,27 @@ the predicted value is
 
 ### logistic function
 由于线性回归的假设函数不再适用于分类问题，因此我们需要一个函数来应用于分类问题的拟合。
-logistic回归主要面向问题是分类问题，下面讨论二分类的问题。  
-$$h_\theta(x) = g(\theta^Tx)$$
-logistic function(sigmoid function):
-$$g(z) = \frac{1}{1+e^{-z}}$$
+一般来说，回归不用在分类问题上，因为回归是连续型模型，而且受噪声影响比较大。如果非要应用进入，可以使用logistic回归。
 
-这里$$h_\theta(x)= P(y=1|x;\theta)$$  
+我们可以使用logistic regression解决分类问题，Logistic回归是二分类任务的首选方法，下面讨论二分类的问题。  
+$$
+h_\theta(x) = g(\theta^Tx)
+$$
+
+logistic function(sigmoid function):
+
+$$
+g(z) = \frac{1}{1+e^{-z}}
+$$
+
+这里
+$$
+h_\theta(x)= P(y=1|x;\theta)
+$$
 含义是在x已知条件下，给定参数θ，事件*y=1*发生的概率  
+
+logistic回归本质上是线性回归，只是在特征到结果的映射中加入了一层函数映射，即先把特征线性求和，然后使用函数g(z)将最为假设函数来预测。g(z)可以将连续值映射到0和1上。  
+
 
 对g(z)的解释：将任意的输入映射到[0,1]区间上，我们在线性回归中可以得到一个预测值，再将该值映射到Sigmoid函数，这样我们就实现了由值到概率的转换，也就是分类任务。
 
@@ -282,7 +296,9 @@ $$g(z) = \frac{1}{1+e^{-z}}$$
 >     当y等于0时，假设函数计算出的概率应该小于0.5，即θ的转置乘以x需要小于0
 >     另外需要注意的是阈值0.5在一些情况下是可以改变的，从而获得我们所希望的特征
 ### cost function
-$$J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}$$
+$$
+J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}
+$$
 这里我们将 cost function 定义为
 $$
 cost(h_\theta(x),y) = \begin{cases}
@@ -290,24 +306,30 @@ cost(h_\theta(x),y) = \begin{cases}
 -\log(1-h_\theta(x)) & y = 0
 \end{cases}
 $$
-例如，y = 1时 \\(h_\theta(x) \rightarrow 1 \\),cost = 0 表示误差很小。 此时，若 \\(h_\theta(x) \rightarrow 0 \\)  ,\\(cost \rightarrow  \infty  \\)表示误差很大  
+例如，y = 1时 $ h_\theta(x) \rightarrow 1  $,cost = 0 表示误差很小。 此时，若 $ h_\theta(x) \rightarrow 0  $  ,$ cost \rightarrow  \infty   $表示误差很大  
 
 
 ### Simple Classification(简单分类算法)
 >     Note：y=0 or 1
 
 这里对cost function进行优化，表示为：
-$$cost(h_\theta(x),y) = -y\log(h_\theta(x))-(1-y)\log(1-h_\theta(x))$$
+$$
+cost(h_\theta(x),y) = -y\log(h_\theta(x))-(1-y)\log(1-h_\theta(x))
+$$
 
 >     这里的cost function 实际上也是由对θ的极大似然估计推导出来的。
 
-
 by the way,remind:
-$$J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}$$
+$$
+J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}
+$$
 
-$$h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}$$
+$$
+h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}
+$$
 
-ok,接着我们对 \\( J_\theta(x) \\) 计算偏微分
+ok,接着我们对 $  J_\theta(x)  $ 计算偏微分
+
 $$
 \begin{equation} \begin{split}
 \frac{\partial}{\partial\theta_j}J(\theta) &=
@@ -315,7 +337,9 @@ $$
 &= \frac{1}{m} \sum_{i=1}^m (-y \frac{1}{h_\theta(x)} \frac{\partial}{\partial\theta_j}h_\theta(x) - (1-y)\frac{1}{1-h_\theta(x)}(-1) \frac{\partial}{\partial\theta_j}h_\theta(x) )
 \end{split} \end{equation}
 $$
-其中  
+
+其中 
+
 $$
 \begin{equation} \begin{split}
 \frac{1}{h_\theta(x)} &= 1+e^{-\theta^Tx} \\\\
@@ -328,7 +352,7 @@ $$
 &= (h_\theta(x))^{2}x_je^{-\theta^T x}
 \end{split} \end{equation}  
 $$
-将上面式子代入 \\( \frac{\partial}{\partial\theta_j}J(\theta) \\) 得
+将上面式子代入 $  \frac{\partial}{\partial\theta_j}J(\theta)  $ 得
 $$
 \begin{equation} \begin{split}
 \frac{\partial}{\partial\theta_j}J(\theta) = &\frac{1}{m} \sum_{i=1}^m (-y(1+e^{-\theta^Tx}) (h_\theta(x))^{2}x_je^{-\theta^T x}   + \\\\
@@ -341,14 +365,14 @@ $$
  h_\theta(x) x_j \\\\
 = &\frac{1}{m} \sum_{i=1}^m (h_\theta(x)-y) x_j
 \end{split} \end{equation}
-$$  
+$$
 **这里我们推出一个重要的结论**
 $$
 \frac{\partial}{\partial\theta_j}J(\theta) = \frac{1}{m} \sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) x_j \\\\
 \theta_j := \theta_j - \alpha \frac{\partial}{\partial\theta_j}J(\theta) = \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) x_j
 $$
 >	**Note:**
->	这里的\\( h_\theta(x^{(i)}) \\) 与 线性回归模型中的 \\( h_\theta(x^{(i)}) \\) 定义不一样，尽管计算出来的\\( \frac{\partial}{\partial\theta_j}J(\theta) \\)形式相同
+>	这里的$  h_\theta(x^{(i)})  $ 与 线性回归模型中的 $  h_\theta(x^{(i)})  $ 定义不一样，尽管计算出来的$  \frac{\partial}{\partial\theta_j}J(\theta)  $形式相同
 
 
 ### Code
@@ -593,10 +617,10 @@ Optimization algorithms:
 - Conjugate gradient
 - BFGS
 - L-BFGS
-后面三种算法不需要给出学习率\\( \alpha \\)，且运算速度较快，但是算法较为复杂，选修。
+后面三种算法不需要给出学习率$  \alpha  $，且运算速度较快，但是算法较为复杂，选修。
 
 ### 多类别处理
-遇到y的取值不仅仅是0,1情况时，可以将一类与其余类化为两种模型，然后用划分两类的分类算法计算出h(x)，最后每一类都对应一个h(x)，训练出模型后，判断\\( \max h_\theta(x) \\)对应的类即为最后输出。
+遇到y的取值不仅仅是0,1情况时，可以将一类与其余类化为两种模型，然后用划分两类的分类算法计算出h(x)，最后每一类都对应一个h(x)，训练出模型后，判断$  \max h_\theta(x)  $对应的类即为最后输出。
 
 
 ## 关于机器学习的一些概念补充
@@ -619,17 +643,23 @@ Optimization algorithms:
 
 #### 召回率（也叫查全率）
 
-$$召回率=\frac{真正例}{真正例+假负例}$$
+$$
+召回率=\frac{真正例}{真正例+假负例}
+$$
 >     正确判为恐怖分子占实际所有恐怖分子的比例。
 >     在某些情况中，我们也许需要以牺牲另一个指标为代价来最大化精度或者召回率。
 >     比如检测癌症
 
 #### 精确度(precision,也叫查准率)
-$$精确度()=\frac{真正例}{真正例+假正例}$$
+$$
+精确度()=\frac{真正例}{真正例+假正例}
+$$
 >     在所有判为恐怖分子中，真正的恐怖分子的比例。
 
 #### 准确率（accuracy）
-$$ accuracy = \frac{TP+TN}{P+N} = \frac{TP+TN}{TP+TN+FP+FN} $$
+$$
+ accuracy = \frac{TP+TN}{P+N} = \frac{TP+TN}{TP+TN+FP+FN} 
+$$
 
 
 ## 正则化(Regularization)
@@ -644,54 +674,416 @@ $$ accuracy = \frac{TP+TN}{P+N} = \frac{TP+TN}{TP+TN+FP+FN} $$
 	it works well when we have a lot of features,each of which contributs a bit to predicting y.
 
 3. Regularization used in linear Regression
-	- $$ J(\theta) = \frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^{n}\theta_j^2] $$
+	- $  J(\theta) = \frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^{n}\theta_j^2]  ​$
 
 >     λ 称为 regularization parameter
->	Note:加上\\( \theta^2 \\) 是一种形式，有时也可以选择加上\\( |\theta| \\)
+>	Note:加上$  \theta^2  $ 是一种形式，有时也可以选择加上$  |\theta|  $
 
-
-	3.1 Gradient descent
+3.1 Gradient descent
 $$
-\begin{equation}\begin{split}
-Repeat\ \ \ \ &\{
-\\\\
-&\theta_0 := \theta_0 -\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\thet (x^{(i)})-y^{(i)})x_0^{(i)}	\\\\
+\begin{align}\begin{split}
+Repeat  &\\\{ \\\\
+&\theta_0 := \theta_0 -\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta (x^{(i)})-y^{(i)})x_0^{(i)}	\\\\
 &\theta_j := \theta_j -\alpha[\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} +\frac{\lambda}{m} \theta_j] \\\\
 &(j = 1,2,,...,n) \\\\
-\}
+&\\\}
+\end{split}\end{align}
+$$
+
+* 其中
+$$
+\begin{equation}\begin{split}
+&\theta_j := \theta_j (1 - \alpha \frac{\lambda}{m}) - \alpha \frac{1}{m} \sum^m_{i=1}(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}
 \end{split}\end{equation}
 $$
 
-		* 其中
-$$\begin{equation}\begin{split}
-&\theta_j := \theta_j (1 - \alpha \frac{\lambda}{m}) - \alpha \frac{1}{m} \sum^m_{i=1}(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}
-\end{split}\end{equation}$$
-
-	3.2 Normal Equation
-- $$\theta = ( X^TX+ \lambda\begin{bmatrix}{0}&{0}&{\cdots}&{0}\\\\{0}&{1}&{\cdots}&{0}\\\\{\vdots}&{\vdots}&{\ddots}&{\vdots}\\\\{0}&{0}&{\cdots}&{1}\\\\\end{bmatrix}_{n*n} )^{-1} X^Ty$$
-
+3.2 Normal Equation
+$$
+\theta = ( X^TX+ \lambda\begin{bmatrix}{0}&{0}&{\cdots}&{0}\\\\{0}&{1}&{\cdots}&{0}\\\\{\vdots}&{\vdots}&{\ddots}&{\vdots}\\\\{0}&{0}&{\cdots}&{1}\\\\\end{bmatrix}_{n \times n} )^{-1} X^Ty
+$$
 4. Regularization used in logistic Regression
 
 ## Neural networks(神经网络)
 
-### Typeical Application
-待补充
+### Typeical Application（应用领域）
+
+| Example     | Principle |
+| ----------- | ------------------------------- |
+| Ad.userinfo | Online Advertising(Stardard NN) |
+| Image       | Phototapping(CNN convoliutional nerual network) |
+| Audio       | Speech recognation(RNN recurrent nerual network) |
+| Machine translation| RNN |
+| Autonomous driving | hybrid neural network + custum nerual network|
+
+#### Conceopts
+
+- Structured Data
+	- Data in the database(have rows and cols)
+	- 一般是离散的、有组织结构的
+- Unstructured Data
+	- Audio、Image、Text
+	- 一般是连续的、无组织结构的
+
+
 ### Layer
-待补充
+
+神经网络是分层的  
+一般来说  
+**Layer 1**: Input Layer  
+**Layer 2~N-1**: Hidden Layer
+**Layer N**: Output Layer
+
+![](https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=04192a7afd36afc31a013737d27080a1/c75c10385343fbf2b547c199ba7eca8065388f24.jpg)
+
+![神经元模型](https://upload-images.jianshu.io/upload_images/9602672-75c1a75ecbf72943.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/287/format/webp '神经元模型')
+
+Definations:  
+1. $  a_i^{(j)}  $:"activation" of unit i in layer j
+2. $  \theta^{(j)}  $:matrix of weights controlling function mapping from $  layer_j  $ to $  layer_{j+1}  ​$
+
+
+Examples:
+1. 输出仅有一个的神经网络
+$$
+a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3 ) \\\\
+a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3 ) \\\\
+a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3 ) \\\\
+\\\\
+h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0 + \theta_{11}^{(2)}a_1 + \theta_{12}^{(2)}a_2 + \theta_{13}^{(2)}a_3 ) 
+$$
+
+### Forward propagation
+令  
+$$
+z_1^{(2)} = \theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3 \\\\
+z_2^{(2)} = \theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3 \\\\
+z_3^{(2)} = \theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3
+$$
+则有  
+$$
+a_0^{(2)} = 1 \\\\
+a_1^{(2)} = g(z_1^{(2)}) \\\\
+a_2^{(2)} = g(z_2^{(2)}) \\\\
+a_3^{(2)} = g(z_3^{(2)}) \\\\
+\\\\
+z^{(3)} = \theta^{(2)}a^{(2)} \\\\
+\\\\
+h_\theta(x) = a^{(3)} = g(z^{(3)})
+$$
+以上过程称为 **Forward propagation**  
+if network has $  s_j  $ uints in layer j,$  s_{j+1}  $ uints in layer j+1,then $  \theta^{(j)}  $ will be of dimension $  s_{j+1}\times(s_j+1)  $
+
+### Multi-class classification
+若是表示多个输出，那么$  h_\theta(x)  $ 维度将大于1，变成一个向量矩阵，这个时候输出也就变成了多为
+
+### cost function
+
+对于  
+$$
+{(x^{(1)},y^{(1)}),(x^{(2)},y^{(21)}),...,(x^{(m)},y^{(m)})}
+$$
+这m个样本数据训练出来的神经网络来说，我们定义:  
+L = total number of layers in network  
+$  s_l  $ = no. of units(not counting bias unit) in layer $  l  $  
+
+我们类比**logistic regression**的 $  J( (\theta)  $
+$$
+J( \theta  ) = -\frac{1}{m}[\sum_{i=1}^{m}y^{(i)} \log(h_\theta(x^{(i)})) + (1-y^{(i)})\log(1-h_\theta(x^{(i)})) ] + \frac{\lambda}{2m}\sum_{j=1}^{m}\theta_{j}^2 
+$$
+
+Neural network:  
+$$
+h_\theta(x) \in \mathbf{R}^K
+$$
+$$
+ \lgroup h_\theta(x) \rgroup_{i} = i^{th} output
+$$
+那么在神经网络中，cost function定义为  
+$$
+J(\theta) = -\frac{1}{m}[\sum_{i=1}^{m} \sum_{k=1}^{K} y_k^{(i)} \log(\lgroup h_\theta(x^{(i)}) \rgroup_k) + (1-y_k^{(i)}) \log(1- \lgroup h_\theta(x^{(i)}) \rgroup_k) ] + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{j=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\theta_{ji}^{(l)})^2
+$$
+
+>	Note:
+1. l-1表示去掉输出层
+2. $ i= 1 \to s_l  $ 表示去掉$  \theta_{j0}  $这一列
+3. $ j= 1 \to s_{j+1}  $  表示全部行
+
 ### Backpropagetion algorithm(反向传播算法)
-待补充
+
+1. Forward propagation
+$$
+\begin{align}
+&a^{(1)} = x \\\\
+&z^{(2)} = \theta^{(1)}a^{(1)} \\\\
+&a^{(2)} = g(z^{(2)}) (add\ a_0^{(2)}) \\\\
+&z^{(3)} = \theta^{(2)}a^{(2)} \\\\
+&a^{(3)} = g(z^{(3)}) (add\ a_0^{(3)}) \\\\
+&z^{(4)} = \theta^{(3)}a^{(3)} \\\\
+&a^{(4)} = h_\theta(x) = g(z^{(4)})
+\end{align}
+$$
+2. 为了计算导数项，引入Back propagation algorithm  
+Intuition: $ \delta^{(l)} = "error"\ of\ node\ j\ in\ layer\ l $ 
+$$
+\delta^{(l)} = \frac{\delta}{\delta z_j^{(l)}} cost(i) \\\\
+cost(i) = y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(h_\theta(x^{(i)}))
+$$
+Example:  
+For each output unit(layer L = 4)  
+$$
+\delta_j^{(4)} = a_j^{(4)} = y_j \ (a_j^{(4)} = h_\theta(x)_j) \\\\ 
+\delta_j^{(3)} = (\theta^{(3)})^T \delta^{(4)}\ .*\ g'(z^{(3)}) \\\\
+\delta_j^{(2)} = (\theta^{(2)})^T \delta^{(3)}\ .*\ g'(z^{(2)}) \\\\
+g'(z^{(3)}) = a^{(3)}\ .*\ (1-a^{(3)}) 
+$$
+
+Step:  
+Training set $ {(x^{(1)},y^{(1)}),(x^{(2)},y^{(21)}),...,(x^{(m)},y^{(m)})} $  
+Set $ \Delta_{ij}^{(l)} = 0 \ (for\ all l,i,j) $ (use to compute $ \frac{\delta}{\delta\theta_{ij}^{(l)}}J(\theta) $)
+
+For i = 1 to m  
+set $ a^{(1)} = x^{(i)} ​$  
+Perform forward propagation to compute a^{(i)} for l=2,3,...,L  
+Using $ y^{(i)} ​$,compute $ \delta^(l) = a^{(l)} - y^{(i)} ​$  
+Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)} ​$  
+$ \Delta_{ij}^{(l)} := \Delta_{ij}^{(l)} + a_j^{(l)}\delta_j^{(l+1)} ​$  
+$ \Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}(a^{(l)})^T ​$  
+$ D_{ij}^{(l)} := \frac{1}{m}\Delta_{ij}^{(l)} + \lambda \theta_{ij}^{(l)} \ if j\  \ne 0 ​$
+$ D_{ij}^{(l)} := \frac{1}{m}\Delta_{ij}^{(l)} \ if \ j = 0 ​$  
+$ \frac{\delta}{\delta_{ij}^{(l)}}J(\theta) = D_{ij}^{(l)} ​$
+
 ### Gradient checking(梯度检测)
-待补充
+原理：  
+$$
+\frac{d}{d\theta}J(\theta) \approx \frac{J(\theta + \epsilon)-J(\theta-\epsilon)}{2\epsilon}(双侧差分) \\\\
+eg.\epsilon = 10^{-4}
+$$
+As for $ \vec\theta $   
+$ \vec\theta \in \mathbf{R}^{n} $  
+$ \vec\theta = [\theta_1,\theta_2,...,\theta_n] ​$
+$$
+\begin{align}
+
+&\frac{d}{d\theta}J(\theta_1) \approx \frac{J(\theta_1+\epsilon,\theta_2,...,\theta_n)-J(\theta_1-\epsilon,\theta_2,...,\theta_n)}{2\epsilon} \\\\
+&\frac{d}{d\theta}J(\theta_n) \approx \frac{J(\theta_1,\theta_2+\epsilon,...,\theta_n)-J(\theta_1,\theta_2-\epsilon,...,\theta_n)}{2\epsilon} \\\\
+&\vdots \\\\
+&\frac{d}{d\theta}J(\theta_n) \approx \frac{J(\theta_1,\theta_2,...,\theta_n+\epsilon)-J(\theta_1,\theta_2,...,\theta_n-\epsilon)}{2\epsilon}
+\end{align}
+$$
+
+check that $ D_{vect} \approx gradApprox $  
+gradApprox is calculated by
+$$
+\frac{d}{d\theta}J(\theta) \approx \frac{J(\theta + \epsilon)-J(\theta-\epsilon)}{2\epsilon}
+$$
+$ D_{vect} $ is calculated bt Backpropation
+
+Note:
+> 1. 使用反向传播计算 $ D_{vect} $
+> 2. 使用梯度检验计算 gradApprox
+> 3. 确保 $ D_{vect} \approx gradApprox $
+> 4. 不再使用gradient checking,using backprop for learning
+
+Important:
+>     Be sure to disable your gradient checking code before training your classifier.If yourun numerical gradient computation on evety iteration of gradient descent,your code will be bery slow
+
 ### Random initialization(随机初始化)
-待补充
+
+关于 $ \vec\theta $的初始化一般具有两种方案  
+1. $ \vec\theta = \vec{0} $
+  - After each update,parameters corresponding to inputs going into each of two hidden units are identical
+2. Initial each $ \theta_{ij}^{(l)} $ to a random value in $[-\epsilon,\epsilon]$
+
+显然我们选用方案2作为我们在神经网络中的theta参数的初始化方案
+
 ### Summary
-待补充
 
-## Test and Debug
+Training a neural network  
+1. Randomly initialize weights
+2. Implement forward propagation to get $ h_\theta(x^{(i)}) $ for any $ x^{(i)} ​$
+3. Implement code to compute cost function $ J(\theta) $
+4. Implement backprop to compute partial derivatives $ \frac{\delta}{\delta\theta_{jk}} J(\theta) $.for i = 1:m,Perform forward propagation and back propagation using example $ (x^{(i)},y^{(i)}) $,(Get activations $ a^{(l)} $ and delta terms $ \delta^{(l)} $ for l=2,3,...,L)
+5. Use gradient to compare $ \frac{\delta}{\delta\theta_{jk}} J(\theta) $.computed using backpropagation vs using numerical estimate of gradient of $ J(\theta) $
+6. Use gradient descent or advanced optimization method with back propogation to try to minimize $ J(\theta) $ as a function of parameters $ \theta $
 
-### Debug the ML System
-待补充
-### Machine learning diagnostic
-待补充
-### Evalating your hypothesis
-待补充
+Note:
+
+>	J(\theta) is non-convex function in neural network,So,we can only get a local minimum.
+
+
+### Code
+
+这里我们使用tensorflow来逐步构建一个简单的神经网络模型。  
+
+#### version 1
+搜索 cifar-10 下载python格式的图片数据，一共有十类，这里我们使用二分类逻辑回归实现建模
+
+```Python
+#!/usr/bin/env python
+# coding: utf-8
+
+
+import tensorflow as tf
+import os
+import pickle
+import numpy as np
+
+
+CIFAT_DIR = '../cifar-10-batches-py'
+print(os.listdir(CIFAT_DIR))
+
+
+def load_data(filename):
+    """read data from data file"""
+    with open(os.path.join(filename), 'rb') as f:
+        # data = pickle.load(f, encoding='bytes')
+
+        # Python2.7代码
+        data = pickle.load(f)
+        return data['data'], data['labels']
+
+
+class CifarData:
+    def __init__(self, filenames, need_shuffle):
+        all_data = []
+        all_labels = []
+        # 关于zip函数 具体看
+        # http://www.cnblogs.com/frydsh/archive/2012/07/10/2585370.html
+        for filename in filenames:
+            data, labels = load_data(filename)
+            for item, label in zip(data, labels):
+                # label一共有是个类别 每个类别各 5000各
+                # 使用该判断获取类别
+                if label in [0, 1]:
+                    all_data.append(item)
+                    all_labels.append(label)
+        # 关于 vstack函数
+        # https://www.cnblogs.com/nkh222/p/8932369.html
+        self._data = np.vstack(all_data)
+        # 归一化处理
+        self._data = self._data / 127.5 - 1;
+        self._labels = np.hstack(all_labels)
+        print(self._data.shape)
+        print(self._labels.shape)
+        self._num_examples = self._data.shape[0]
+        self._need_shuffle = need_shuffle
+        self._indicator = 0
+        if self._need_shuffle:
+            self._shuffle_data()
+
+    def _shuffle_data(self):
+        # 【0,1,2,3,4】 => [2,1,3,4,0]
+        p = np.random.permutation(self._num_examples)
+        self._data = self._data[p]
+        self._labels = self._labels[p]
+
+    def next_batch(self, batch_size):
+        """return batch_size examples as a batch """
+        end_indicator = self._indicator + batch_size
+        if end_indicator > self._num_examples:
+            if self._need_shuffle:
+                self._shuffle_data()
+                self._indicator = 0
+                end_indicator = batch_size
+            else:
+                raise Exception("have no more examples")
+        if end_indicator > self._num_examples:
+            raise Exception('batch size is larger than all examles')
+        batch_data = self._data[self._indicator: end_indicator]
+        batch_labels = self._labels[self._indicator: end_indicator]
+        self._indicator = end_indicator
+        return batch_data, batch_labels
+
+
+train_filenames = [os.path.join(CIFAT_DIR, 'data_batch_%d' % i) for i in range(1, 6)]
+test_filenames = [os.path.join(CIFAT_DIR, 'test_batch')]
+
+train_data = CifarData(train_filenames, True)
+test_data = CifarData(test_filenames, False)
+# batch_data, batch_labels = train_data.next_batch(10)
+# print(batch_data,batch_labels)
+
+
+# None 代表输入样本数是不确定的
+x = tf.placeholder(tf.float32, [None, 3072])
+# None
+y = tf.placeholder(tf.int64, [None])
+# 先构造一个 二分类器 因此输出为1
+# (3072,1)
+w = tf.get_variable('w', [x.get_shape()[-1], 1], initializer=tf.random_normal_initializer(0, 1))
+# (1, )
+b = tf.get_variable('b', [1], initializer=tf.constant_initializer(0.0))
+# [None,3072] *[3072,1] = [None,1]
+y_ = tf.matmul(x, w) + b
+# [None,1]
+p_y_1 = tf.nn.sigmoid(y_)
+# 这里-1参数表示缺省值 保证为1列即可
+y_reshaped = tf.reshape(y, (-1, 1))
+y_reshaped_float = tf.cast(y_reshaped, tf.float32)
+# 计算loss
+loss = tf.reduce_mean(tf.square(y_reshaped_float - p_y_1))
+predict = p_y_1 > 0.5
+correct_prediction = tf.equal(tf.cast(predict, tf.int64), y_reshaped)
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float64))
+
+with tf.name_scope('train_op'):
+    # 这里1e-3是学习率 learning rate AdamOptimizer是梯度下降的一个变种
+    train_op = tf.train.AdamOptimizer(1e-3).minimize(loss)
+
+'''
+到此为止我们的计算图搭建完成
+'''
+
+init = tf.global_variables_initializer()
+batch_size = 20
+train_steps = 100000
+test_steps = 100
+
+with tf.Session() as sess:
+    sess.run(init)
+    for i in range(train_steps):
+        batch_data, batch_labels = train_data.next_batch(batch_size)
+        loss_val, accu_val, _ = sess.run(
+            [loss, accuracy, train_op],
+            feed_dict={x: batch_data, y: batch_labels})
+        if (i+1) % 500 == 0:
+            print('[Train] Step: %d, loss: %4.5f,acc: %4.5f' % (i+1, loss_val, accu_val))
+        if(i+1) % 5000 == 0:
+            test_data = CifarData(test_filenames, False)
+            all_test_acc_val = []
+            for j in xrange(test_steps):
+                test_batch_data, test_batch_labels \
+                 = test_data.next_batch(batch_size)
+                test_acc_val = sess.run(
+                    [accuracy],
+                    feed_dict={
+                        x: test_batch_data,
+                        y: test_batch_labels
+                    }
+                )
+                all_test_acc_val.append(test_acc_val)
+            test_acc = np.mean(all_test_acc_val)
+            print('[Test] Step: %d, acc: %4.5f ' % (i+1, test_acc))
+
+
+
+```
+
+运行结果:
+```
+[Train] Step: 98500, loss: 0.10032,acc: 0.90000
+[Train] Step: 99000, loss: 0.10000,acc: 0.90000
+[Train] Step: 99500, loss: 0.10080,acc: 0.90000
+[Train] Step: 100000, loss: 0.05529,acc: 0.95000
+(2000, 3072)
+(2000,)
+[Test] Step: 100000, acc: 0.81200 
+
+Process finished with exit code 0
+```
+
+这里我们继续使用该算法实现多分类器
+
+```Python
+
+```

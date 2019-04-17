@@ -1079,12 +1079,7 @@ body .markdown-body
 .codehilite .gc{color:#999;background-color:#EAF2F5}
 </style><title>readme</title></head><body><article class="markdown-body"><script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
-        TeX: { 
-            equationNumbers: { autoNumber: ['AMS'], useLabelIds: true }, 
-            extensions: ['extpfeil.js'],
-            Macros: {bm: "\\boldsymbol"}
-        },
+        tex2jax: { inlineMath: [['$','$'], ['$ ',' $']], processClass: 'math', processEscapes: true },
         'HTML-CSS': { linebreaks: { automatic: true } },
         SVG: { linebreaks: { automatic: true } }
         });
@@ -1108,12 +1103,12 @@ body .markdown-body
 $$<br />
 J(\theta) = \frac{1}{2}\sum_{i=1}^{m}(y^{(i)}-\theta^T x^{(i)})^2<br />
 $$<br />
-来源于假设误差\( \varepsilon_i \)服从正态分布，然后对参数\( \theta \)进行极大似然估计，经过运算后得出\( J(\theta) \)取最小时，似然函数最大，从而推出这个式子。<br />
-此外，对这个\( J(\theta) \)求偏导，令其偏导数为0（这里涉及到矩阵偏导数计算），即可得到正规方程(normal equation)。</p>
+来源于假设误差 $  \varepsilon_i  $ 服从正态分布，然后对参数$  \theta  $进行极大似然估计，经过运算后得出$  J(\theta)  $取最小时，似然函数最大，从而推出这个式子。<br />
+此外，对这个$  J(\theta)  $求偏导，令其偏导数为0（这里涉及到矩阵偏导数计算），即可得到正规方程(normal equation)。</p>
 <h2 id="python"><a name="user-content-python" href="#python" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>梯度下降法的Python实现</h2>
 <p>参考代码，自己就一些细节进行优化<br />
-<a href="https://www.cnblogs.com/focusonepoint/p/6394339.html">https://www.cnblogs.com/focusonepoint/p/6394339.html</a><br />
-<div class="codehilite"><pre><span class="ch">#!/usr/bin/python</span>
+(<a href="https://www.cnblogs.com/focusonepoint/p/6394339.html">https://www.cnblogs.com/focusonepoint/p/6394339.html</a>)</p>
+<p><div class="codehilite"><pre><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -1185,10 +1180,10 @@ $$<br />
 
 <span class="c1"># a test for the algorithm</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">],</span> 
-    <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> 
-    <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">],</span> 
-    <span class="p">[</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">],</span>
     <span class="p">[</span><span class="mf">3.9</span><span class="p">,</span> <span class="mf">7.1</span><span class="p">]</span>
 <span class="p">])</span>
 
@@ -1220,11 +1215,11 @@ the predicted value is
 <li>Feature Scaling（特征缩放）<ul>
 <li>归一化<ol>
 <li>线性归一化<ul>
-<li>$$ {x}&rsquo; = \frac{x - \min(x)}{\max(x) - \min(x)} $$</li>
+<li>$  {x}&rsquo; = \frac{x - \min(x)}{\max(x) - \min(x)}  $</li>
 </ul>
 </li>
 <li>标准差归一化<ul>
-<li>$$ x^* = \frac{x- \overline x}{s} $$</li>
+<li>$  x^* = \frac{x- \overline x}{s}  $</li>
 </ul>
 </li>
 <li>非线性归一化</li>
@@ -1233,9 +1228,9 @@ the predicted value is
 </ul>
 </li>
 <li>多项式回归<ul>
-<li>$$h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2$$</li>
-<li>$$h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3$$</li>
-<li>$$h_\theta(x) = \theta_0 + \theta_1x + \theta_2\sqrt{x}$$</li>
+<li>$ h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2 $</li>
+<li>$ h_\theta(x) = \theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3 $</li>
+<li>$ h_\theta(x) = \theta_0 + \theta_1x + \theta_2\sqrt{x} $</li>
 <li>上面的举例只是为了说明，x<sub>i</sub>的取值可以不是x的一次多项式，但是这里要注意的是特征缩放在这里显得尤为重要</li>
 </ul>
 </li>
@@ -1246,17 +1241,21 @@ the predicted value is
 </ul>
 <h2 id="normal-equation"><a name="user-content-normal-equation" href="#normal-equation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Normal Equation（正规方程法）</h2>
 <h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>思想</h3>
-<p>$$J\theta(x) = \frac{1}{2m}\sum_{i=1}^m{(h_\theta(x)-y)^2}$$<br />
-$$= a\theta^2 + b\theta + c$$</p>
+<p>$$<br />
+J_\theta(x) = \frac{1}{2m}\sum_{i=1}^m{(h_\theta(x)-y)^2} \\<br />
+= a\theta^2 + b\theta + c<br />
+$$</p>
 <p>微积分思想：求导后令导数为零解方程可以求出极值点θ<br />
 对于θ是一个n维向量的情况，可以利用多元函数取极值的必要条件，即偏导数为0</p>
 <h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>结论</h3>
-<p>$$\theta = (X^TX)^{-1}X^Ty$$</p>
-<h4 id="note"><a name="user-content-note" href="#note" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Note</h4>
+<p>$$<br />
+\theta = (X^TX)^{-1}X^Ty<br />
+$$</p>
+<h3 id="note"><a name="user-content-note" href="#note" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Note</h3>
 <ol>
 <li>No need to do feature scaling</li>
 <li>只适用于线性模型，不适合逻辑回归模型等其他模型</li>
-<li>the pseudo inverse of matrix <ul>
+<li>the pseudo inverse of matrix<ul>
 <li>redundant features (x中存在线性相关的量)</li>
 <li>too many features (eg. m &lt;= n 数据个数小于特征参数)</li>
 </ul>
@@ -1277,7 +1276,7 @@ $$= a\theta^2 + b\theta + c$$</p>
     <span class="n">xTrains</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
     <span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="c1"># theta 为 n维列向量</span>
-    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xTrains</span><span class="p">,</span><span class="n">x</span><span class="p">))</span> 
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xTrains</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">xTrains</span><span class="p">)</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">theta</span>
@@ -1303,9 +1302,9 @@ $$= a\theta^2 + b\theta + c$$</p>
 <span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dataSet</span><span class="p">)</span>
 <span class="c1"># print(m,n)</span>
 <span class="n">trainData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
-<span class="c1"># 截取dataSet的前N-1列 </span>
+<span class="c1"># 截取dataSet的前N-1列</span>
 <span class="n">trainData</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="c1"># 获取dataSet的最后一列 </span>
+<span class="c1"># 获取dataSet的最后一列</span>
 <span class="n">trainLabel</span> <span class="o">=</span> <span class="n">dataSet</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 
@@ -1317,10 +1316,10 @@ $$= a\theta^2 + b\theta + c$$</p>
 
 <span class="c1"># a test for the algorithm</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">],</span> 
-    <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> 
-    <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">],</span> 
-    <span class="p">[</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">],</span>
     <span class="p">[</span><span class="mf">3.9</span><span class="p">,</span> <span class="mf">7.1</span><span class="p">]</span>
 <span class="p">])</span>
 
@@ -1349,13 +1348,22 @@ the predicted value is
 <p><strong>由此可以知道，在特征矩阵维度不是太大情况下，对于线性回归模型，normal equation 是一个优先选用的方法。</strong></p>
 <h2 id="logistic-regression"><a name="user-content-logistic-regression" href="#logistic-regression" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Logistic Regression</h2>
 <h3 id="logistic-function"><a name="user-content-logistic-function" href="#logistic-function" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>logistic function</h3>
-<p>由于线性回归的假设函数不再适用于分类问题，因此我们需要一个函数来应用于分类问题的拟合。 <br />
-logistic回归主要面向问题是分类问题，下面讨论二分类的问题。<br />
-$$h_\theta(x) = g(\theta^Tx)$$<br />
-logistic function(sigmoid function):<br />
-$$g(z) = \frac{1}{1+e^{-z}}$$</p>
-<p>这里$$h_\theta(x)= P(y=1|x;\theta)$$<br />
+<p>由于线性回归的假设函数不再适用于分类问题，因此我们需要一个函数来应用于分类问题的拟合。<br />
+一般来说，回归不用在分类问题上，因为回归是连续型模型，而且受噪声影响比较大。如果非要应用进入，可以使用logistic回归。</p>
+<p>我们可以使用logistic regression解决分类问题，Logistic回归是二分类任务的首选方法，下面讨论二分类的问题。<br />
+$$<br />
+h_\theta(x) = g(\theta^Tx)<br />
+$$</p>
+<p>logistic function(sigmoid function):</p>
+<p>$$<br />
+g(z) = \frac{1}{1+e^{-z}}<br />
+$$</p>
+<p>这里<br />
+$$<br />
+h_\theta(x)= P(y=1|x;\theta)<br />
+$$<br />
 含义是在x已知条件下，给定参数θ，事件<em>y=1</em>发生的概率  </p>
+<p>logistic回归本质上是线性回归，只是在特征到结果的映射中加入了一层函数映射，即先把特征线性求和，然后使用函数g(z)将最为假设函数来预测。g(z)可以将连续值映射到0和1上。  </p>
 <p>对g(z)的解释：将任意的输入映射到[0,1]区间上，我们在线性回归中可以得到一个预测值，再将该值映射到Sigmoid函数，这样我们就实现了由值到概率的转换，也就是分类任务。</p>
 <p><strong>Note：</strong>   </p>
 <blockquote>
@@ -1367,7 +1375,9 @@ $$g(z) = \frac{1}{1+e^{-z}}$$</p>
 
 </blockquote>
 <h3 id="cost-function"><a name="user-content-cost-function" href="#cost-function" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>cost function</h3>
-<p>$$J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}$$<br />
+<p>$$<br />
+J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}<br />
+$$<br />
 这里我们将 cost function 定义为<br />
 $$<br />
 cost(h_\theta(x),y) = \begin{cases}<br />
@@ -1375,7 +1385,7 @@ cost(h_\theta(x),y) = \begin{cases}<br />
 -\log(1-h_\theta(x)) &amp; y = 0<br />
 \end{cases}<br />
 $$<br />
-例如，y = 1时 \(h_\theta(x) \rightarrow 1 \),cost = 0 表示误差很小。 此时，若 \(h_\theta(x) \rightarrow 0 \)  ,\(cost \rightarrow  \infty  \)表示误差很大  </p>
+例如，y = 1时 $ h_\theta(x) \rightarrow 1  $,cost = 0 表示误差很小。 此时，若 $ h_\theta(x) \rightarrow 0  $  ,$ cost \rightarrow  \infty   $表示误差很大  </p>
 <h3 id="simple-classification"><a name="user-content-simple-classification" href="#simple-classification" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Simple Classification(简单分类算法)</h3>
 <blockquote>
 <div class="codehilite"><pre>Note：y=0 or 1
@@ -1384,7 +1394,9 @@ $$<br />
 
 </blockquote>
 <p>这里对cost function进行优化，表示为：<br />
-$$cost(h_\theta(x),y) = -y\log(h_\theta(x))-(1-y)\log(1-h_\theta(x))$$</p>
+$$<br />
+cost(h_\theta(x),y) = -y\log(h_\theta(x))-(1-y)\log(1-h_\theta(x))<br />
+$$</p>
 <blockquote>
 <div class="codehilite"><pre><span class="nx">这里的cost</span> <span class="kd">function</span> <span class="nx">实际上也是由对θ的极大似然估计推导出来的</span><span class="err">。</span>
 </pre></div>
@@ -1392,18 +1404,22 @@ $$cost(h_\theta(x),y) = -y\log(h_\theta(x))-(1-y)\log(1-h_\theta(x))$$</p>
 
 </blockquote>
 <p>by the way,remind:<br />
-$$J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}$$</p>
-<p>$$h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}$$</p>
-<p>ok,接着我们对 \( J_\theta(x) \) 计算偏微分<br />
 $$<br />
+J_\theta(x) = \frac{1}{m}\sum_{i=1}^m{cost(h_\theta(x^{(i)}),y^{(i)})}<br />
+$$</p>
+<p>$$<br />
+h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}<br />
+$$</p>
+<p>ok,接着我们对 $  J_\theta(x)  $ 计算偏微分</p>
+<p>$$<br />
 \begin{equation} \begin{split}<br />
-\frac{\partial}{\partial\theta_j}J(\theta) &amp;= <br />
+\frac{\partial}{\partial\theta_j}J(\theta) &amp;=<br />
 \frac{1}{m} \sum_{i=1}^m \frac{\partial}{\partial\theta_j}cost(h_\theta(x^{(i)}),y^{(i)})\\<br />
 &amp;= \frac{1}{m} \sum_{i=1}^m (-y \frac{1}{h_\theta(x)} \frac{\partial}{\partial\theta_j}h_\theta(x) - (1-y)\frac{1}{1-h_\theta(x)}(-1) \frac{\partial}{\partial\theta_j}h_\theta(x) )<br />
-\end{split} \end{equation} <br />
-$$<br />
-其中<br />
-$$<br />
+\end{split} \end{equation}<br />
+$$</p>
+<p>其中 </p>
+<p>$$<br />
 \begin{equation} \begin{split}<br />
 \frac{1}{h_\theta(x)} &amp;= 1+e^{-\theta^Tx} \\<br />
 \\<br />
@@ -1411,20 +1427,20 @@ $$<br />
 &amp;= \frac{1+e^{-\theta^Tx}}{e^{-\theta^Tx}} \\<br />
 &amp;= 1 + e^{\theta^Tx} \\<br />
 \\<br />
-\frac{\partial}{\partial\theta_j}h_\theta(x) &amp;= -(1+e^{-\theta^Tx})^{-2}(e^{-\theta^T x})(-x_j) \\ <br />
+\frac{\partial}{\partial\theta_j}h_\theta(x) &amp;= -(1+e^{-\theta^Tx})^{-2}(e^{-\theta^T x})(-x_j) \\<br />
 &amp;= (h_\theta(x))^{2}x_je^{-\theta^T x}<br />
 \end{split} \end{equation}<br />
 $$<br />
-将上面式子代入 \( \frac{\partial}{\partial\theta_j}J(\theta) \) 得<br />
+将上面式子代入 $  \frac{\partial}{\partial\theta_j}J(\theta)  $ 得<br />
 $$<br />
 \begin{equation} \begin{split}<br />
 \frac{\partial}{\partial\theta_j}J(\theta) = &amp;\frac{1}{m} \sum_{i=1}^m (-y(1+e^{-\theta^Tx}) (h_\theta(x))^{2}x_je^{-\theta^T x}   + \\<br />
 &amp;(1-y) (1 + e^{\theta^Tx}) (h_\theta(x))^{2}x_je^{-\theta^T x} ) \\<br />
-= &amp;\frac{1}{m} \sum_{i=1}^m -y h_\theta(x) x_je^{-\theta^T x} + <br />
+= &amp;\frac{1}{m} \sum_{i=1}^m -y h_\theta(x) x_je^{-\theta^T x} +<br />
 (1-y) h_\theta(x) x_j \\<br />
-= &amp;\frac{1}{m} \sum_{i=1}^m -y(1-h_\theta(x)) x_j + <br />
+= &amp;\frac{1}{m} \sum_{i=1}^m -y(1-h_\theta(x)) x_j +<br />
  h_\theta(x) x_j - y  h_\theta(x) x_j \\<br />
-= &amp;\frac{1}{m} \sum_{i=1}^m -yx_j + <br />
+= &amp;\frac{1}{m} \sum_{i=1}^m -yx_j +<br />
  h_\theta(x) x_j \\<br />
 = &amp;\frac{1}{m} \sum_{i=1}^m (h_\theta(x)-y) x_j<br />
 \end{split} \end{equation}<br />
@@ -1436,7 +1452,7 @@ $$<br />
 $$</p>
 <blockquote>
 <p><strong>Note:</strong><br />
-  这里的\( h_\theta(x^{(i)}) \) 与 线性回归模型中的 \( h_\theta(x^{(i)}) \) 定义不一样，尽管计算出来的\( \frac{\partial}{\partial\theta_j}J(\theta) \)形式相同</p>
+  这里的$  h_\theta(x^{(i)})  $ 与 线性回归模型中的 $  h_\theta(x^{(i)})  $ 定义不一样，尽管计算出来的$  \frac{\partial}{\partial\theta_j}J(\theta)  $形式相同</p>
 </blockquote>
 <h3 id="code_1"><a name="user-content-code_1" href="#code_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Code</h3>
 <div class="codehilite"><pre><span class="ch">#!/usr/bin/python</span>
@@ -1600,7 +1616,7 @@ $$</p>
 <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">theta</span><span class="p">))</span>
 
-<span class="c1"># x2 x1 x0 </span>
+<span class="c1"># x2 x1 x0</span>
 <span class="c1"># res = model(trainData,theta)</span>
 <span class="k">def</span> <span class="nf">cost_function</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">theta</span><span class="p">):</span>
     <span class="n">h_x</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span>
@@ -1680,10 +1696,10 @@ $$</p>
 <li>Conjugate gradient</li>
 <li>BFGS</li>
 <li>L-BFGS<br />
-后面三种算法不需要给出学习率\( \alpha \)，且运算速度较快，但是算法较为复杂，选修。</li>
+后面三种算法不需要给出学习率$  \alpha  $，且运算速度较快，但是算法较为复杂，选修。</li>
 </ul>
 <h3 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>多类别处理</h3>
-<p>遇到y的取值不仅仅是0,1情况时，可以将一类与其余类化为两种模型，然后用划分两类的分类算法计算出h(x)，最后每一类都对应一个h(x)，训练出模型后，判断\( \max h_\theta(x) \)对应的类即为最后输出。</p>
+<p>遇到y的取值不仅仅是0,1情况时，可以将一类与其余类化为两种模型，然后用划分两类的分类算法计算出h(x)，最后每一类都对应一个h(x)，训练出模型后，判断$  \max h_\theta(x)  $对应的类即为最后输出。</p>
 <h2 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>关于机器学习的一些概念补充</h2>
 <h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>下采样与上采样</h3>
 <p>下采样，对于一个不均衡的数据，让目标值(如0和1分类)中的样本数据量相同，且以数据量少的一方的样本数量为准。<br />
@@ -1697,7 +1713,9 @@ $$</p>
 真负例（True Negative，TN）:预测值与真实值都为0<br />
 假负例（False Negative，FN）：预测值为0，真实值为1(存伪)</p>
 <h4 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>召回率（也叫查全率）</h4>
-<p>$$召回率=\frac{真正例}{真正例+假负例}$$</p>
+<p>$$<br />
+召回率=\frac{真正例}{真正例+假负例}<br />
+$$</p>
 <blockquote>
 <div class="codehilite"><pre>正确判为恐怖分子占实际所有恐怖分子的比例。
 在某些情况中，我们也许需要以牺牲另一个指标为代价来最大化精度或者召回率。
@@ -1707,7 +1725,9 @@ $$</p>
 
 </blockquote>
 <h4 id="precision"><a name="user-content-precision" href="#precision" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>精确度(precision,也叫查准率)</h4>
-<p>$$精确度()=\frac{真正例}{真正例+假正例}$$</p>
+<p>$$<br />
+精确度()=\frac{真正例}{真正例+假正例}<br />
+$$</p>
 <blockquote>
 <div class="codehilite"><pre>在所有判为恐怖分子中，真正的恐怖分子的比例。
 </pre></div>
@@ -1715,7 +1735,9 @@ $$</p>
 
 </blockquote>
 <h4 id="accuracy"><a name="user-content-accuracy" href="#accuracy" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>准确率（accuracy）</h4>
-<p>$$ accuracy = \frac{TP+TN}{P+N} = \frac{TP+TN}{TP+TN+FP+FN} $$</p>
+<p>$$<br />
+ accuracy = \frac{TP+TN}{P+N} = \frac{TP+TN}{TP+TN+FP+FN} <br />
+$$</p>
 <h2 id="regularization"><a name="user-content-regularization" href="#regularization" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>正则化(Regularization)</h2>
 <h3 id="underfittingoverfitting"><a name="user-content-underfittingoverfitting" href="#underfittingoverfitting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>欠拟合(underfitting)和过拟合(overfitting)</h3>
 <h3 id="how-to-addressing-overfitting"><a name="user-content-how-to-addressing-overfitting" href="#how-to-addressing-overfitting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>How to addressing overfitting</h3>
@@ -1731,7 +1753,7 @@ it works well when we have a lot of features,each of which contributs a bit to p
 <li>
 <p>Regularization used in linear Regression</p>
 <ul>
-<li>$$ J(\theta) = \frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^{n}\theta_j^2] $$</li>
+<li>$  J(\theta) = \frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^{n}\theta_j^2]  $</li>
 </ul>
 </li>
 </ol>
@@ -1740,45 +1762,146 @@ it works well when we have a lot of features,each of which contributs a bit to p
 </pre></div>
 
 
-<p>Note:加上\( \theta^2 \) 是一种形式，有时也可以选择加上\( |\theta| \)</p>
+<p>Note:加上$  \theta^2  $ 是一种形式，有时也可以选择加上$  |\theta|  $</p>
 </blockquote>
-<div class="codehilite"><pre>3.1 Gradient descent
-</pre></div>
-
-
-<ul>
-<li>
-<p>$$ \begin{equation}\begin{split} <br />
-Repeat &amp; \{  \\<br />
-&amp;\theta_0 := \theta_0 - \alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)} \\<br />
-&amp;\theta_j := \theta_j - \alpha[\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} + \frac{\lambda}{m} \theta_j] \\<br />
+<p>3.1 Gradient descent<br />
+$$<br />
+\begin{align}\begin{split}<br />
+Repeat  &amp;\{ \\<br />
+&amp;\theta_0 := \theta_0 -\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta (x^{(i)})-y^{(i)})x_0^{(i)} \\<br />
+&amp;\theta_j := \theta_j -\alpha[\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} +\frac{\lambda}{m} \theta_j] \\<br />
 &amp;(j = 1,2,,&hellip;,n) \\<br />
-\}<br />
-\end{split}\end{equation} $$</p>
-<div class="codehilite"><pre>* 其中
-</pre></div>
-
-
-<p>$$\begin{equation}\begin{split}<br />
+&amp;\}<br />
+\end{split}\end{align}<br />
+$$</p>
+<ul>
+<li>其中<br />
+$$<br />
+\begin{equation}\begin{split}<br />
 &amp;\theta_j := \theta_j (1 - \alpha \frac{\lambda}{m}) - \alpha \frac{1}{m} \sum^m_{i=1}(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}<br />
-\end{split}\end{equation}$$</p>
+\end{split}\end{equation}<br />
+$$</li>
+</ul>
 <p>3.2 Normal Equation<br />
-    - $$ \theta = ( X^TX+ \lambda \begin{bmatrix}<br />
-{0}&amp;{0}&amp;{\cdots}&amp;{0}\\<br />
-{0}&amp;{1}&amp;{\cdots}&amp;{0}\\<br />
-{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br />
-{0}&amp;{0}&amp;{\cdots}&amp;{1}\\<br />
-\end{bmatrix}_{n*n} )^{-1} X^Ty $$</p>
+$$<br />
+\theta = ( X^TX+ \lambda\begin{bmatrix}{0}&amp;{0}&amp;{\cdots}&amp;{0}\\{0}&amp;{1}&amp;{\cdots}&amp;{0}\\{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\{0}&amp;{0}&amp;{\cdots}&amp;{1}\\\end{bmatrix}_{n \times n} )^{-1} X^Ty<br />
+$$<br />
+4. Regularization used in logistic Regression</p>
+<h2 id="neural-networks"><a name="user-content-neural-networks" href="#neural-networks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Neural networks(神经网络)</h2>
+<h3 id="typeical-application"><a name="user-content-typeical-application" href="#typeical-application" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Typeical Application（应用领域）</h3>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad.userinfo</td>
+<td>Online Advertising(Stardard NN)</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>Phototapping(CNN convoliutional nerual network)</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Speech recognation(RNN recurrent nerual network)</td>
+</tr>
+<tr>
+<td>Machine translation</td>
+<td>RNN</td>
+</tr>
+<tr>
+<td>Autonomous driving</td>
+<td>hybrid neural network + custum nerual network</td>
+</tr>
+</tbody>
+</table>
+<h4 id="conceopts"><a name="user-content-conceopts" href="#conceopts" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Conceopts</h4>
+<ul>
+<li>Structured Data<ul>
+<li>Data in the database(have rows and cols)</li>
+<li>一般是离散的、有组织结构的</li>
+</ul>
+</li>
+<li>Unstructured Data<ul>
+<li>Audio、Image、Text</li>
+<li>一般是连续的、无组织结构的</li>
+</ul>
 </li>
 </ul>
-<ol>
-<li>Regularization used in logistic Regression</li>
-</ol>
-<h2 id="neural-networks"><a name="user-content-neural-networks" href="#neural-networks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>(Neural networks)神经网络</h2>
-<h3 id="typeical-application"><a name="user-content-typeical-application" href="#typeical-application" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Typeical Application</h3>
-<p>待补充</p>
 <h3 id="layer"><a name="user-content-layer" href="#layer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Layer</h3>
-<p>待补充</p>
+<p>神经网络是分层的<br />
+一般来说<br />
+<strong>Layer 1</strong>: Input Layer<br />
+<strong>Layer 2~N-1</strong>: Hidden Layer<br />
+<strong>Layer N</strong>: Output Layer</p>
+<p><img alt="" src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=04192a7afd36afc31a013737d27080a1/c75c10385343fbf2b547c199ba7eca8065388f24.jpg" /></p>
+<p><img alt="神经元模型" src="https://upload-images.jianshu.io/upload_images/9602672-75c1a75ecbf72943.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/287/format/webp" title="神经元模型" /></p>
+<p>Definations:<br />
+1. $  a_i^{(j)}  $:&rdquo;activation&rdquo; of unit i in layer j<br />
+2. $  \theta^{(j)}  $:matrix of weights controlling function mapping from $  layer_j  $ to $  layer_{j+1}  $</p>
+<p>Examples:<br />
+1. 输出仅有一个的BP神经网络<br />
+$$<br />
+a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3 ) \\<br />
+a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3 ) \\<br />
+a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3 ) \\<br />
+\\<br />
+h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0 + \theta_{11}^{(2)}a_1 + \theta_{12}^{(2)}a_2 + \theta_{13}^{(2)}a_3 ) <br />
+$$</p>
+<h3 id="forward-propagation"><a name="user-content-forward-propagation" href="#forward-propagation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Forward propagation</h3>
+<p>令<br />
+$$<br />
+z_1^{(2)} = \theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3 \\<br />
+z_2^{(2)} = \theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3 \\<br />
+z_3^{(2)} = \theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3<br />
+$$<br />
+则有<br />
+$$<br />
+a_0^{(2)} = 1 \\<br />
+a_1^{(2)} = g(z_1^{(2)}) \\<br />
+a_2^{(2)} = g(z_2^{(2)}) \\<br />
+a_3^{(2)} = g(z_3^{(2)}) \\<br />
+\\<br />
+z^{(3)} = \theta^{(2)}a^{(2)} \\<br />
+\\<br />
+h_\theta(x) = a^{(3)} = g(z^{(3)})<br />
+$$<br />
+以上过程称为 <strong>Forward propagation</strong><br />
+if network has $  s_j  $ uints in layer j,$  s_{j+1}  $ uints in layer j+1,then $  \theta^{(j)}  $ will be of dimension $  s_{j+1}\times(s_j+1)  $</p>
+<h3 id="multi-class-classification"><a name="user-content-multi-class-classification" href="#multi-class-classification" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Multi-class classification</h3>
+<p>若是表示多个输出，那么$  h_\theta(x)  $ 维度将大于1，变成一个向量矩阵，这个时候输出也就变成了多为</p>
+<h3 id="cost-function_1"><a name="user-content-cost-function_1" href="#cost-function_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>cost function</h3>
+<p>对于<br />
+$$<br />
+{(x^{(1)},y^{(1)}),(x^{(2)},y^{(21)}),&hellip;,(x^{(m)},y^{(m)})}<br />
+$$<br />
+这m个样本数据训练出来的神经网络来说，我们定义:<br />
+L = total number of layers in network<br />
+$  s_l  $ = no. of units(not counting bias unit) in layer $  l  $  </p>
+<p>我们类比<strong>logistic regression</strong>的 $  J( (\theta)  $<br />
+$$<br />
+J( \theta  ) = -\frac{1}{m}[\sum_{i=1}^{m}y^{(i)} \log(h_\theta(x^{(i)})) + (1-y^{(i)})\log(1-h_\theta(x^{(i)})) ] + \frac{\lambda}{2m}\sum_{j=1}^{m}\theta_{j}^2 <br />
+$$</p>
+<p>Neural network:<br />
+$$<br />
+h_\theta(x) \in \mathbf{R}^K<br />
+$$<br />
+$$<br />
+ \lgroup h_\theta(x) \rgroup_{i} = i^{th} output<br />
+$$<br />
+那么在神经网络中，cost function定义为<br />
+$$<br />
+J(\theta) = -\frac{1}{m}[\sum_{i=1}^{m} \sum_{k=1}^{K} y_k^{(i)} \log(\lgroup h_\theta(x^{(i)}) \rgroup_k) + (1-y_k^{(i)}) \log(1- \lgroup h_\theta(x^{(i)}) \rgroup_k) ] + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{j=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\theta_{ji}^{(l)})^2$$</p>
+<blockquote>
+<p>Note:<br />
+1. l-1表示去掉输出层<br />
+2. $ i= 1 \to s_l  $ 表示去掉$  \theta_{j0}  $这一列<br />
+3. $ j= 1 \to s_{j+1}  $  表示全部行</p>
+</blockquote>
 <h3 id="backpropagetion-algorithm"><a name="user-content-backpropagetion-algorithm" href="#backpropagetion-algorithm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Backpropagetion algorithm(反向传播算法)</h3>
 <p>待补充</p>
 <h3 id="gradient-checking"><a name="user-content-gradient-checking" href="#gradient-checking" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Gradient checking(梯度检测)</h3>
