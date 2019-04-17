@@ -85,21 +85,45 @@ x = tf.placeholder(tf.float32, [None, 3072])
 # None
 y = tf.placeholder(tf.int64, [None])
 # 先构造一个 二分类器 因此输出为1
-# (3072,1)
-w = tf.get_variable('w', [x.get_shape()[-1], 1], initializer=tf.random_normal_initializer(0, 1))
-# (1, )
-b = tf.get_variable('b', [1], initializer=tf.constant_initializer(0.0))
-# [None,3072] *[3072,1] = [None,1]
+# (3072,10)
+w = tf.get_variable('w', [x.get_shape()[-1], 10], initializer=tf.random_normal_initializer(0, 1))
+# (10, )
+b = tf.get_variable('b', [10], initializer=tf.constant_initializer(0.0))
+# [None,3072] *[3072,10] = [None,10]
 y_ = tf.matmul(x, w) + b
-# [None,1]
+
+
+# mean square loss
+'''
+# 关于softmax https://www.zhihu.com/question/23765351
+# [[0,01,0.9,...,0.02],[]]
+p_y = tf.nn.softmax(y_)
+# 6 -->[0,0,0,0,0,1,0,0,0,0]
+y_one_hot = tf.one_hot(y, 10, dtype=tf.float32)
+loss = tf.reduce_mean(tf.square(y_one_hot - p_y))
+'''
+
+
+# y_->softmax
+# y -> one_hot
+# loss = ylogy_
+loss = tf.losses.sparse_softmax_cross_entropy(labels=y,logits=y_)
+
+
+
+'''
+# [None,10]
 p_y_1 = tf.nn.sigmoid(y_)
 # 这里-1参数表示缺省值 保证为1列即可
 y_reshaped = tf.reshape(y, (-1, 1))
 y_reshaped_float = tf.cast(y_reshaped, tf.float32)
 # 计算loss
 loss = tf.reduce_mean(tf.square(y_reshaped_float - p_y_1))
-predict = p_y_1 > 0.5
-correct_prediction = tf.equal(tf.cast(predict, tf.int64), y_reshaped)
+'''
+
+# indices
+predict = tf.argmax(y_, 1)
+correct_prediction = tf.equal(predict, y)
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float64))
 
 with tf.name_scope('train_op'):
@@ -112,7 +136,7 @@ with tf.name_scope('train_op'):
 
 init = tf.global_variables_initializer()
 batch_size = 20
-train_steps = 100000
+train_steps = 10000
 test_steps = 100
 
 with tf.Session() as sess:
