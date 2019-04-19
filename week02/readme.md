@@ -124,9 +124,7 @@ $$
 重新计算$ \theta^{(1)}、\theta^{(2)}、...、\theta^{(10)} $
 Then $ J_{cv}(\theta^{(1)}) $、$ J_{cv}(\theta^{(2)}) $、...、 $ J_{cv}(\theta^{(10)}) $
 挑选出 $ \theta^{(i)} $
-Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  
 
-  
 
 Note: 
 >   有的交叉验证方式是这样的(这种也很常用)
@@ -136,6 +134,61 @@ Note:
 >   A+C->M2 P2
 >   B+C->M3 P3
 >   该指标最终值 P = (P1+P2+P3)/3
+
+### Regularization and bias/variance
+
+#### Linear regression with regularization
+假设我们已经通过上一节课的学习获得了Model:$ h_\theta(x) = \theta_0 + \theta_1 x + \theta_2 x^2 + \theta_3 x^3 + \theta_4 x^4 $  ①
+这时我们要加上正则项  
+$$
+J(\theta)  = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 +  \frac{\lambda}{2m} \sum_{j=1}^{\lambda} \theta_j^2 \text{②}
+$$
+我们面临这样一个问题，$ \lambda $ 过小会出现underfit, $ \lambda $ 过大会出现overfit 
+Q:How can we automatically choose a good value for the regulatization parameter lambda?
+Train error:
+$$
+J_{train}(\theta) = \frac{1}{2m_{train}}\sum_{i=1}^{m_{train}} (h_\theta(x^{(i)}) - y_{train}^{(i)})^2 \\\\
+J_{cv}(\theta) = \frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}} (h_\theta(x^{(i)}) - y_{cv}^{(i)})^2 \\\\
+J_{test}(\theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}} (h_\theta(x^{(i)}) - y_{test}^{(i)})^2
+$$
+我们可以将 $ \lambda=0、0.01、0.02、0.04...10$代入①②两式计算$ \min\limits_{\theta} J(\theta) $ ,然后用$ J_{cv}(\theta) $验证选出最小的$ \lambda $,最后用$ J_{test}(\theta) $检查误差
+Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  
+$J_{cv}(\theta)$会随着$ \lambda $的增大先减小后增大  
+$J_{train}(\theta)$会随着$ \lambda $的增大而增大  
+
+### Learning curve
+学习曲线就是通过画出不同训练集大小时训练集和交叉验证的准确率，可以看到模型在新数据上的表现，进而来判断模型是否方差偏高或偏差过高，以及增大训练集是否可以减小过拟合。
+
+![img](assets/1667471-cc0db48e0b91b13f.png)
+
+当训练集和测试集的误差收敛但却很高时，为高偏差。  
+左上角的偏差很高，训练集和验证集的准确率都很低，很可能是欠拟合。  
+我们可以增加模型参数，比如，构建更多的特征，减小正则项。  
+此时通过增加数据量是不起作用的。  
+
+
+当训练集和测试集的误差之间有大的差距时，为高方差。  
+当训练集的准确率比其他独立数据集上的测试结果的准确率要高时，一般都是过拟合。  
+右上角方差很高，训练集和验证集的准确率相差太多，应该是过拟合。  
+我们可以增大训练集，降低模型复杂度，增大正则项，或者通过特征选择减少特征数。  
+理想情况是是找到偏差和方差都很小的情况，即收敛且误差较小
+
+
+参考博客
+>	作者：不会停的蜗牛
+>	链接：https://www.jianshu.com/p/d89dee94e247
+
+### Priority what to work on: Spam classfication example
+待整理
+###Error metrics for skewed classes
+待整理
+### Trading off presion and recall
+待整理
+### Diagnosing bias vs variance
+待整理
+### Data for machine learning
+待整理
+
 
 ## Decision tree (决策树)
 
@@ -183,7 +236,37 @@ Q：根节点的选择该用哪个特征？
   数据：14天打球情况、特征：4种环境变化、目标：构造决策树
 
   ![img](assets/v2-1c1f9ad69837013230b90f29def7fe26_hd.jpg)
+
+  划分方式：![preview](assets/v2-78202fb539056387f322f5dad7e9b948_r.jpg) 
+  Q：选谁当根节点？
+  ANS：根据信息增益
+  在历史数据中（14天）有9天打球，5天不打球，所以此时的熵应为： $ -\frac{9}{14}\log_2(\frac{9}{14})-\frac{5}{14}\log_2(\frac{5}{14}) = 0.940 $
   
+  4个特征逐一分析，先从outlook特征开始：  
+  - outlook=sunny时，熵值为0.971
+  - outlook=overcast时，熵值为0
+  - outlook=rainy时，熵值为0.971
+  根据数据统计，outlook取值分别为sunny,overcast,rainy的概率分别为：5/14,4/14,5/14
+  熵值计算：5/14 * 0.971 + 4/14 * 0 + 5/14 * 0.971 = 0.693
+  信息增益：系统的熵值从原始的0.940下降到了0.693，增益为0.247
+  同样的方式可以计算出其他特征的信息增益，那么我们选择最大的那个就可以啦
+
+### 决策树算法
+如何切分特征的算法不仅仅局限于信息增益，目前常用算法有三种，分别是:  
+1. 信息增益法(ID3算法)
+2. 信息增益率(C4.5算法、解决ID3问题，考虑自身熵)
+3. CART算法：既可以做分类，也可以做回归。只能形成二叉树。使用GINI系数做衡量标准
+	- GINI系数：$  gini(T) = 1 - \sum p_j^2 = 1 -  \sum (\frac{n_j}{S})^2 $
+	- $ p_j $为类别j在样本T中出现的频率
+	- $ N_j $为样本T中类别j的个数
+	- S为T中的样本个数
+
+### 决策树剪枝策略
+- 为什么要剪枝：决策树过拟合风险很大，理论上可以完全分得开数据
+- 剪枝策略：预剪枝、后剪枝
+- 预剪枝：边建立决策树边进行剪枝的操作
+- 后剪枝：当建立完决策树后再来进行剪枝操作
+
 ###Code
 
 > [Code 参考博客链接](https://www.cnblogs.com/pinard/p/6056319.html)
@@ -252,7 +335,7 @@ print(grid.grid_scores_, grid.best_score_, grid.best_params_)
 ```
 
 
-## (Ensemble learning)集成算法
+## Ensemble learning(集成算法)
 >	Note：集成算法并不是机器学习算法的一种，而相当于把很多个机器学习算法拢在一块。
 
 ### Ensemble learning介绍
@@ -262,7 +345,9 @@ print(grid.grid_scores_, grid.best_score_, grid.best_params_)
   - Boosting：从弱学习器开始加强，通过加权来进行训练
     - $ F_m(x) = F_{m-1}(x) + argmin_h\sum_{i=1}^n L(y_i,F_{m-1}(x_i)+h(x_i))  ​$ 加入一个数，要比原来强
   - Stacking:聚合多个分类和回归模型（可以分阶段来做)
+
 ### Bagging模型
+
 - 全称：bootstrap aggregation(说白了就是并行训练一堆分类器)
 - 最典型的代表就是随机森林
 - 随机：数据采样随机(一般取60%-80%，有放回)，特征选择随机（获得一系列随机的树以后对当中特征也按照60%-80%进行采样）

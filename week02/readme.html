@@ -1200,8 +1200,7 @@ J_{test}(\theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}} (h_\theta(x^{(i)}) -
 $$<br />
 重新计算$ \theta^{(1)}、\theta^{(2)}、&hellip;、\theta^{(10)} $<br />
 Then $ J_{cv}(\theta^{(1)}) $、$ J_{cv}(\theta^{(2)}) $、&hellip;、 $ J_{cv}(\theta^{(10)}) $<br />
-挑选出 $ \theta^{(i)} $<br />
-Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  </p>
+挑选出 $ \theta^{(i)} $</p>
 <p>Note: </p>
 <blockquote>
 <p>有的交叉验证方式是这样的(这种也很常用)<br />
@@ -1212,13 +1211,144 @@ Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  </p>
   B+C-&gt;M3 P3<br />
   该指标最终值 P = (P1+P2+P3)/3</p>
 </blockquote>
-<h2 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>决策树</h2>
+<h3 id="regularization-and-biasvariance"><a name="user-content-regularization-and-biasvariance" href="#regularization-and-biasvariance" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Regularization and bias/variance</h3>
+<h4 id="linear-regression-with-regularization"><a name="user-content-linear-regression-with-regularization" href="#linear-regression-with-regularization" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Linear regression with regularization</h4>
+<p>假设我们已经通过上一节课的学习获得了Model:$ h_\theta(x) = \theta_0 + \theta_1 x + \theta_2 x^2 + \theta_3 x^3 + \theta_4 x^4 $  ①<br />
+这时我们要加上正则项<br />
+$$<br />
+J(\theta)  = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 +  \frac{\lambda}{2m} \sum_{j=1}^{\lambda} \theta_j^2 \text{②}<br />
+$$<br />
+我们面临这样一个问题，$ \lambda $ 过小会出现underfit, $ \lambda $ 过大会出现overfit <br />
+Q:How can we automatically choose a good value for the regulatization parameter lambda?<br />
+Train error:<br />
+$$<br />
+J_{train}(\theta) = \frac{1}{2m_{train}}\sum_{i=1}^{m_{train}} (h_\theta(x^{(i)}) - y_{train}^{(i)})^2 \\<br />
+J_{cv}(\theta) = \frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}} (h_\theta(x^{(i)}) - y_{cv}^{(i)})^2 \\<br />
+J_{test}(\theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}} (h_\theta(x^{(i)}) - y_{test}^{(i)})^2<br />
+$$<br />
+我们可以将 $ \lambda=0、0.01、0.02、0.04&hellip;10$代入①②两式计算$ \min\limits_{\theta} J(\theta) $ ,然后用$ J_{cv}(\theta) $验证选出最小的$ \lambda $,最后用$ J_{test}(\theta) $检查误差<br />
+Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $<br />
+$J_{cv}(\theta)$会随着$ \lambda $的增大先减小后增大<br />
+$J_{train}(\theta)$会随着$ \lambda $的增大而增大  </p>
+<h3 id="learning-curve"><a name="user-content-learning-curve" href="#learning-curve" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Learning curve</h3>
+<p>学习曲线就是通过画出不同训练集大小时训练集和交叉验证的准确率，可以看到模型在新数据上的表现，进而来判断模型是否方差偏高或偏差过高，以及增大训练集是否可以减小过拟合。</p>
+<p><img alt="img" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1667471-cc0db48e0b91b13f.png" /></p>
+<p>当训练集和测试集的误差收敛但却很高时，为高偏差。<br />
+左上角的偏差很高，训练集和验证集的准确率都很低，很可能是欠拟合。<br />
+我们可以增加模型参数，比如，构建更多的特征，减小正则项。<br />
+此时通过增加数据量是不起作用的。  </p>
+<p>当训练集和测试集的误差之间有大的差距时，为高方差。<br />
+当训练集的准确率比其他独立数据集上的测试结果的准确率要高时，一般都是过拟合。<br />
+右上角方差很高，训练集和验证集的准确率相差太多，应该是过拟合。<br />
+我们可以增大训练集，降低模型复杂度，增大正则项，或者通过特征选择减少特征数。<br />
+理想情况是是找到偏差和方差都很小的情况，即收敛且误差较小</p>
+<p>参考博客</p>
 <blockquote>
-<p>这一章没有看吴恩达老师的视频，看的是中科院某博士讲的</p>
+<p>作者：不会停的蜗牛<br />
+  链接：<a href="https://www.jianshu.com/p/d89dee94e247">https://www.jianshu.com/p/d89dee94e247</a></p>
 </blockquote>
+<h3 id="priority-what-to-work-on-spam-classfication-example"><a name="user-content-priority-what-to-work-on-spam-classfication-example" href="#priority-what-to-work-on-spam-classfication-example" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Priority what to work on: Spam classfication example</h3>
+<p>待整理</p>
+<h3 id="error-metrics-for-skewed-classes"><a name="user-content-error-metrics-for-skewed-classes" href="#error-metrics-for-skewed-classes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Error metrics for skewed classes</h3>
+<p>待整理</p>
+<h3 id="trading-off-presion-and-recall"><a name="user-content-trading-off-presion-and-recall" href="#trading-off-presion-and-recall" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Trading off presion and recall</h3>
+<p>待整理</p>
+<h3 id="diagnosing-bias-vs-variance"><a name="user-content-diagnosing-bias-vs-variance" href="#diagnosing-bias-vs-variance" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Diagnosing bias vs variance</h3>
+<p>待整理</p>
+<h3 id="data-for-machine-learning"><a name="user-content-data-for-machine-learning" href="#data-for-machine-learning" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Data for machine learning</h3>
+<p>待整理</p>
+<h2 id="decision-tree"><a name="user-content-decision-tree" href="#decision-tree" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Decision tree (决策树)</h2>
+<blockquote>
+<p>这一章没有看吴恩达老师的视频，看的是中科院某博士讲的<br />
+决策树属于分类算法，分类算法还有比如朴素贝叶斯、SVM、.随机森林、k-近邻（KNN）<br />
+关于几种分类算法，参考博客 <a href="https://www.cnblogs.com/Zhi-Z/p/8912396.html"><a href="https://www.cnblogs.com/Zhi-Z/p/8912396.html"><a href="https://www.cnblogs.com/Zhi-Z/p/8912396.html">https://www.cnblogs.com/Zhi-Z/p/8912396.html</a></a></a><br />
+参考链接 <a href="http://www.cnblogs.com/leoo2sk/archive/2010/09/19/decision-tree.html"><a href="http://www.cnblogs.com/leoo2sk/archive/2010/09/19/decision-tree.html"><a href="http://www.cnblogs.com/leoo2sk/archive/2010/09/19/decision-tree.html">http://www.cnblogs.com/leoo2sk/archive/2010/09/19/decision-tree.html</a></a></a><br />
+决策树分类算法属于监督学习（Supervised learning）</p>
+</blockquote>
+<h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>树模型</h3>
+<ul>
+<li>决策树 ： 从根节点开始一步步走到叶子节点</li>
+<li>所有的数据最终都会落到叶子节点，既可以做分类也可以回归</li>
+<li>数的组成<ol>
+<li>根节点：第一个选择点</li>
+<li>非叶子节点与分支：中间过程</li>
+<li>叶子节点：最终的决策结果</li>
+</ol>
+</li>
+<li>节点<ol>
+<li>增加节点相当于在数据中切一刀</li>
+</ol>
+</li>
+</ul>
+<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>决策树的训练与测试</h3>
+<ul>
+<li>训练阶段：从给定的训练集构造，出来一个树（从根节点开始选择特征，那么应该如何进行切分呢？）</li>
+<li>测试阶段：一旦构造好了决策树，那么分类或者预测任务就很简单了，只需要走一遍就可以了。那么难点在于如何构造出来一棵树。</li>
+</ul>
+<h4 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>如何切分特征(选择节点)</h4>
+<p>Q：根节点的选择该用哪个特征？<br />
+通过一种衡量标准，来计算通过不同特征进行分支选择后的分类情况，找出来最好的那个当做根节点，以此类推。</p>
+<h4 id="-"><a name="user-content--" href="#-" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>衡量标准-熵</h4>
+<ul>
+<li>
+<p>熵：熵是表示随机变量不确定的度量（值越大表示越乱)</p>
+</li>
+<li>
+<p>公式：$ H(X) = -\sum_{i=1}^{m} p_i * \log(p_i) ​$</p>
+</li>
+<li>举例：A={1,1,1,1,1,1,2} B={1,2,3,4,5,6,7}</li>
+<li>$ H_A(X) = -\frac{6}{7} \log_{2}(\frac{6}{7}) -\frac{1}{7}\log_{2}(\frac{1}{7}) = 0.59 ​$</li>
+<li>
+<p>$ H_B(X) = - 7\frac{1}{7}*\log_{2}(\frac{1}{7}) = 2.81 $</p>
+</li>
+<li>
+<p>不确定性越大，得到熵的值就越大</p>
+</li>
+<li>
+<p>当p=0 or p=1是 H(p) = 0,随机变量完全没有不确定性</p>
+</li>
+<li>
+<p>当p=  0.5时，此时随机变量的不确定性最大</p>
+<p><img alt="img" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/v2-951cde8ebd460fd157597402f24a30a5_hd.jpg" /></p>
+</li>
+<li>
+<p>信息增益：表示特征X使得类Y的不确定性减少的程序（分类后的专一性，希望分类后的结果是同类在一起）<br />
+  计算实例：<br />
+  数据：14天打球情况、特征：4种环境变化、目标：构造决策树</p>
+</li>
+</ul>
+<p><img alt="img" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/v2-1c1f9ad69837013230b90f29def7fe26_hd.jpg" /></p>
+<p>划分方式：<img alt="preview" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/v2-78202fb539056387f322f5dad7e9b948_r.jpg" /> <br />
+  Q：选谁当根节点？<br />
+  ANS：根据信息增益<br />
+  在历史数据中（14天）有9天打球，5天不打球，所以此时的熵应为： $ -\frac{9}{14}\log_2(\frac{9}{14})-\frac{5}{14}\log_2(\frac{5}{14}) = 0.940 $</p>
+<p>4个特征逐一分析，先从outlook特征开始：<br />
+  - outlook=sunny时，熵值为0.971<br />
+  - outlook=overcast时，熵值为0<br />
+  - outlook=rainy时，熵值为0.971<br />
+  根据数据统计，outlook取值分别为sunny,overcast,rainy的概率分别为：5/14,4/14,5/14<br />
+  熵值计算：5/14 * 0.971 + 4/14 * 0 + 5/14 * 0.971 = 0.693<br />
+  信息增益：系统的熵值从原始的0.940下降到了0.693，增益为0.247<br />
+  同样的方式可以计算出其他特征的信息增益，那么我们选择最大的那个就可以啦</p>
+<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>决策树算法</h3>
+<p>如何切分特征的算法不仅仅局限于信息增益，目前常用算法有三种，分别是:<br />
+1. 信息增益法(ID3算法)<br />
+2. 信息增益率(C4.5算法、解决ID3问题，考虑自身熵)<br />
+3. CART算法：既可以做分类，也可以做回归。只能形成二叉树。使用GINI系数做衡量标准<br />
+    - GINI系数：$  gini(T) = 1 - \sum p_j^2 = 1 -  \sum (\frac{n_j}{S})^2 $<br />
+    - $ p_j $为类别j在样本T中出现的频率<br />
+    - $ N_j $为样本T中类别j的个数<br />
+    - S为T中的样本个数</p>
+<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>决策树剪枝策略</h3>
+<ul>
+<li>为什么要剪枝：决策树过拟合风险很大，理论上可以完全分得开数据</li>
+<li>剪枝策略：预剪枝、后剪枝</li>
+<li>预剪枝：边建立决策树边进行剪枝的操作</li>
+<li>后剪枝：当建立完决策树后再来进行剪枝操作</li>
+</ul>
 <h3 id="code"><a name="user-content-code" href="#code" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Code</h3>
 <blockquote>
-<p><a href="https://www.cnblogs.com/pinard/p/6056319.html">参考博客链接</a></p>
+<p><a href="https://www.cnblogs.com/pinard/p/6056319.html">Code 参考博客链接</a></p>
 </blockquote>
 <div class="codehilite"><pre><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
@@ -1281,7 +1411,7 @@ Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  </p>
 </pre></div>
 
 
-<h2 id="ensemble-learning"><a name="user-content-ensemble-learning" href="#ensemble-learning" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>(Ensemble learning)集成算法</h2>
+<h2 id="ensemble-learning"><a name="user-content-ensemble-learning" href="#ensemble-learning" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Ensemble learning(集成算法)</h2>
 <blockquote>
 <p>Note：集成算法并不是机器学习算法的一种，而相当于把很多个机器学习算法拢在一块。</p>
 </blockquote>
@@ -1305,8 +1435,8 @@ Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  </p>
 <li>森林：很多决策树并行放在一起</li>
 <li>理论上越多的树效果会越好，但实际上基本超过一定数量就差不多上下浮动了</li>
 </ul>
-<p><img alt="深度截图_选择区域_20190416122403" src="/home/thb/%E6%A1%8C%E9%9D%A2/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20190416122403.png" /></p>
-<h4 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>随机森林优势</h4>
+<p><img alt="1555648891746" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555648891746.png" /></p>
+<h4 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>随机森林优势</h4>
 <ul>
 <li>可以处理很多维度(feature很多)的数据，并且不用做特征选择</li>
 <li>在训练完后，它能够给出哪些feature比较重要</li>
@@ -1329,8 +1459,8 @@ Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  </p>
 </ul>
 <p>堆叠在一起确实能使得准确率得到提升，但是速度是个问题<br />
 集成算法是竞赛与论文神奇，当我们更关注与结果时不妨来试试！</p>
-<h2 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷及神经网络入门</h2>
-<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>传统神经网络问题</h3>
+<h2 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷及神经网络入门</h2>
+<h3 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>传统神经网络问题</h3>
 <ul>
 <li>参数过多<ul>
 <li>举例<ul>
@@ -1369,7 +1499,7 @@ Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  </p>
 </ul>
 </li>
 </ul>
-<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积</h3>
+<h3 id="_14"><a name="user-content-_14" href="#_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积</h3>
 <p>设图像f(x),模板是g(x),然后将模版g(x)在模版中移动,每到一个位置,就把f(x)与g(x)的定义域相交的元素进行乘积并且求和,得出新的图像一点,就是被卷积后的图像. 模版又称为卷积核.卷积核做一个矩阵的形状.<br />
 输出size = 输入size - 卷积核size+(1,1)</p>
 <p>步长的概念:模板在图像上每一次移动的个数。<br />
@@ -1390,13 +1520,13 @@ $$</li>
 多个卷积核的物理含义是提取图像中的多种特征</p>
 <p>Q：卷基层，输入三通道，输出192通道，卷积核大小是3<em>3，问该卷基层有多少参数？<br />
 A：(3</em>(3*3)) * 192 = 5184</p>
-<h3 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>激活函数</h3>
+<h3 id="_15"><a name="user-content-_15" href="#_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>激活函数</h3>
 <p><img alt="1555506603689" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555506603689.png" /></p>
 <p><img alt="1555506652458" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555506652458.png" /></p>
-<h3 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>池化</h3>
-<h4 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>最大化池化</h4>
+<h3 id="_16"><a name="user-content-_16" href="#_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>池化</h3>
+<h4 id="_17"><a name="user-content-_17" href="#_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>最大化池化</h4>
 <p><img alt="1555507419261" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555507419261.png" /></p>
-<h4 id="_14"><a name="user-content-_14" href="#_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>平均值池化</h4>
+<h4 id="_18"><a name="user-content-_18" href="#_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>平均值池化</h4>
 <p><img alt="1555507491980" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555507491980.png" /></p>
 <ul>
 <li>使用时不重叠、不补零</li>
@@ -1405,7 +1535,7 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 <li>用于减小图像尺寸，从而减少计算量</li>
 <li>一定程度解决平移鲁棒性</li>
 </ul>
-<h3 id="_15"><a name="user-content-_15" href="#_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>全连接</h3>
+<h3 id="_19"><a name="user-content-_19" href="#_19" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>全连接</h3>
 <ul>
 <li>将上一层输出展开并连接到每一个神经元上</li>
 <li>全连接层之后可以加全连接层，但是不可以加卷积层、池化层</li>
@@ -1413,7 +1543,7 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 <li>相比卷积层，参数数目较大，占比比较大</li>
 <li>参数数目 = 输入通道数目*输出通道数目</li>
 </ul>
-<h3 id="_16"><a name="user-content-_16" href="#_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积神经网络结构</h3>
+<h3 id="_20"><a name="user-content-_20" href="#_20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积神经网络结构</h3>
 <ul>
 <li>卷积神经网络=卷积层+池化层+全连接层</li>
 </ul>
@@ -1794,14 +1924,14 @@ A：(3</em>(3*3)) * 192 = 5184</p>
             <span class="k">print</span><span class="p">(</span><span class="s">&#39;[Test] Step: </span><span class="si">%d</span><span class="s">, acc: </span><span class="si">%4.5f</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">))</span>
 </pre></div>
 </p>
-<h2 id="_17"><a name="user-content-_17" href="#_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积神经网络进阶</h2>
-<h3 id="_18"><a name="user-content-_18" href="#_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>不同网络结构</h3>
+<h2 id="_21"><a name="user-content-_21" href="#_21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积神经网络进阶</h2>
+<h3 id="_22"><a name="user-content-_22" href="#_22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>不同网络结构</h3>
 <ul>
 <li>不同的网络结构解决的问题不同</li>
 <li>不同的网络结构使用的技巧不同</li>
 <li>不同的网络结构应用的场景不同</li>
 </ul>
-<h3 id="_19"><a name="user-content-_19" href="#_19" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模型的进化</h3>
+<h3 id="_23"><a name="user-content-_23" href="#_23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模型的进化</h3>
 <ul>
 <li>更深更宽 - AlexNex到VGGNet</li>
 <li>不同的模型结构 - VGG到Inception/ResNet</li>
@@ -1810,9 +1940,9 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 <li>实用-MobileNet</li>
 </ul>
 <h3 id="alexnet"><a name="user-content-alexnet" href="#alexnet" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>AlexNet</h3>
-<h4 id="_20"><a name="user-content-_20" href="#_20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>网络结构</h4>
+<h4 id="_24"><a name="user-content-_24" href="#_24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>网络结构</h4>
 <p><img alt="1555551101297" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555551101297.png" /></p>
-<h4 id="_21"><a name="user-content-_21" href="#_21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一个卷积层</h4>
+<h4 id="_25"><a name="user-content-_25" href="#_25" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一个卷积层</h4>
 <ul>
 <li>输入224*224</li>
 <li>Stride = 4,卷积核 11*11</li>
@@ -1821,7 +1951,7 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 </ul>
 <h4 id="relu"><a name="user-content-relu" href="#relu" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>首次使用Relu</h4>
 <p><img alt="1555551314221" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555551314221.png" /></p>
-<h4 id="_22"><a name="user-content-_22" href="#_22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>特点</h4>
+<h4 id="_26"><a name="user-content-_26" href="#_26" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>特点</h4>
 <ul>
 <li>2-GPU并行结构</li>
 <li>1，2，5卷积层后跟随max-pooling层</li>
@@ -1836,7 +1966,7 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 <li>7个CNN做ensemble：18.2%-&gt;15.4%</li>
 </ul>
 <h3 id="vggnet"><a name="user-content-vggnet" href="#vggnet" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>VGGNET</h3>
-<h4 id="_23"><a name="user-content-_23" href="#_23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>网络结构</h4>
+<h4 id="_27"><a name="user-content-_27" href="#_27" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>网络结构</h4>
 <ul>
 <li>更深</li>
 <li>多使用3x3的卷积核<ul>
@@ -1847,14 +1977,14 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 <li>1x1的卷积层可以看做是非线性变化</li>
 <li>每次经过一个pooling层，通道数目翻倍</li>
 </ul>
-<h4 id="_24"><a name="user-content-_24" href="#_24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>视野域</h4>
+<h4 id="_28"><a name="user-content-_28" href="#_28" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>视野域</h4>
 <ul>
 <li>视野域：2个3x3 = 1个5x5</li>
 <li>2层比1层更多一次非线性变换</li>
 <li>参数降低28%<br />
 <img alt="1555555875364" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555555875364.png" /></li>
 </ul>
-<h4 id="_25"><a name="user-content-_25" href="#_25" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>技巧</h4>
+<h4 id="_29"><a name="user-content-_29" href="#_29" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>技巧</h4>
 <ul>
 <li>先训练浅层网络，再利用浅层网络参数去训练深层网络</li>
 <li>多尺度输入<ul>
@@ -1867,7 +1997,7 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 <p>问题抛出  :模型深度达到某个程度后继续加深会导致训练集准确率下降<br />
 <img alt="1555568710543" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555568710543.png" /><br />
 <img alt="1555568792285" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555568792285.png" /></p>
-<h4 id="_26"><a name="user-content-_26" href="#_26" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>加深层次的问题解决</h4>
+<h4 id="_30"><a name="user-content-_30" href="#_30" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>加深层次的问题解决</h4>
 <ul>
 <li>
 <p>假设：深层网络更难优化而非深层网络学不到东西</p>
@@ -1883,7 +2013,7 @@ A：(3</em>(3*3)) * 192 = 5184</p>
 <li>F(x)是残差学习</li>
 </ul>
 <p><img alt="1555569155117" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555569155117.png" /></p>
-<h4 id="_27"><a name="user-content-_27" href="#_27" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模型结构</h4>
+<h4 id="_31"><a name="user-content-_31" href="#_31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模型结构</h4>
 <ul>
 <li>Resnet-34 与 Resnet-101使用的子结构<br />
 <img alt="1555569365936" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555569365936.png" /></li>
