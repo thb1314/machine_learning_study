@@ -1,0 +1,1896 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*github*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>readme</title></head><body><article class="markdown-body"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['$ ',' $']], processClass: 'math', processEscapes: true },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+</script>
+
+<script src="https://mathjax.cnblogs.com/2_7_2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第二周机器学习</h1>
+<blockquote>
+<div class="codehilite"><pre>本文公式显示需要使用Mathjax，然后令人悲伤的是github不支持Mathjax
+您可以将这篇md文件pull下来，使用您本地的markdown解析器解析
+没有必要在公示显示上浪费时间，您也可以下载我本地生成的html用浏览器打开即可
+或者您也可以下载我上传到github上的pdf
+</pre></div>
+
+
+<p><em><a href="https://github.com/mathjax/MathJax">Mathjax开源项目地址</a></em></p>
+</blockquote>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>关于机器学习的一些概念补充</h2>
+<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>深度学习与机器学习的关系</h3>
+<p><img alt="1555427724679" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555427724679.png" /><br />
+- 机器学习是实现人工只能的方法<br />
+- 深度学习是实现机器学习算法的技术</p>
+<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>深度学习算法集合</h3>
+<ul>
+<li><strong>卷积神经网络</strong></li>
+<li><strong>循环神经网络</strong></li>
+<li>自动编码器</li>
+<li>稀疏编码</li>
+<li>深度信念网络</li>
+<li>限制玻尔兹曼机</li>
+<li>深度学习+强化学习 = 深度强化学习(AlphaGo)</li>
+</ul>
+<h3 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>深度学习进展</h3>
+<ul>
+<li>图像分类</li>
+<li>机器翻译</li>
+<li>图像生成</li>
+<li>AlphaGo</li>
+</ul>
+<h2 id="test-and-debug-your-ml-system"><a name="user-content-test-and-debug-your-ml-system" href="#test-and-debug-your-ml-system" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Test and Debug Your ML System</h2>
+<h3 id="debug-the-ml-system"><a name="user-content-debug-the-ml-system" href="#debug-the-ml-system" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Debug the ML System</h3>
+<p>high bias(underfitting)/high variance(overfitting)<br />
+Suppose you have implement regularized linear regressionto predict housing prices.<br />
+$$<br />
+J(\theta) = \frac{1}{2m}[\sum_{i=1}^{m} (h_\theta(x^{(i)}) - (y^{(i)}) )^2 + \lambda \sum_{j=1}^m \theta_j^2]<br />
+$$<br />
+However,when you test your hypothesis on a new set of houses,you find that it makes unacceptably large errors in its prodiction,what should you try next?<br />
+- Get more training examples - fixes high variance<br />
+- Try smaller sets of features - fixes high variance<br />
+- Try getting additional features - fixes high bias<br />
+- Try adding polynomil features(多项式特征) - fixes high bias(eg. $ x_1^2,x_2^2,x_1x_2,etc $)<br />
+- Try decreasing $ \lambda $ - fixes high bias<br />
+- Try increasing $ \lambda $ - fixes high variance</p>
+<h3 id="machine-learning-diagnostic"><a name="user-content-machine-learning-diagnostic" href="#machine-learning-diagnostic" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Machine learning diagnostic</h3>
+<p>A test you can run to gain insignt what is/isn&rsquo;t working with a learning algorithm,and gain guidance as to how best to improve its performance<br />
+Diagnostics can take time to implement,but doing so can be a very good use of time.</p>
+<h3 id="evalating-your-hypothesis"><a name="user-content-evalating-your-hypothesis" href="#evalating-your-hypothesis" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Evalating your hypothesis</h3>
+<p>将数据集(dataset)分为两类，一类叫Trainingset,一类叫Testset<br />
+eg. 70% trainingset 30% Testset  </p>
+<h4 id="trainingtesting-procedure-for-linear-regression"><a name="user-content-trainingtesting-procedure-for-linear-regression" href="#trainingtesting-procedure-for-linear-regression" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Training/testing procedure for linear regression</h4>
+<ol>
+<li>Learn parameter $ \theta $ from training data(minimizing training error $ J(\theta) $)</li>
+<li>Compute testset error:<br />
+$$<br />
+J_{test}( \theta ) = \frac{1}{2m} \sum_{i=1}^{m_{test}}(h_\theta(x_{test}^{(i)}) - y_{test}^{(i)})^2<br />
+$$</li>
+</ol>
+<h4 id="trainingtesting-procedure-for-linear-regression_1"><a name="user-content-trainingtesting-procedure-for-linear-regression_1" href="#trainingtesting-procedure-for-linear-regression_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Training/testing procedure for linear regression</h4>
+<ol>
+<li>Learn parameter $ \theta $ from training data(minimizing training error $ J(\theta) $)</li>
+<li>Compute testset error:<br />
+$$<br />
+J_{test}( \theta ) = - \frac{1}{m_{test}} \sum_{i=1}^{m_{test}} [y_{test}^{(i)} \log (h_\theta(x_{test}^{(i)})) + (1 - y_{test}^{(i)}) \log (h_\theta(x_{test}^{(i)}))]<br />
+$$</li>
+<li>Misclassification error (0/1 misclassification error)  </li>
+</ol>
+<p>$$<br />
+err(h_\theta(x),y) = <br />
+\begin{cases}<br />
+1,  &amp;\text{if $h(\theta) \geq 0.5 $ , y = 0} \\<br />
+0, &amp;\text{if $h(\theta) \lt 0.5$ , y = 1}<br />
+\end{cases}<br />
+$$<br />
+$$<br />
+error_{Test} = \frac{1}{m_{test}} \sum_{i=1}^{m_{test}}err(h_\theta(x_{test}^{(i)}),y_{test}^{(i)})<br />
+$$</p>
+<h2 id="advice-for-applying-machine-learning"><a name="user-content-advice-for-applying-machine-learning" href="#advice-for-applying-machine-learning" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Advice for applying machine learning</h2>
+<h3 id="model-selection-and-trainingvalidationtest-sets"><a name="user-content-model-selection-and-trainingvalidationtest-sets" href="#model-selection-and-trainingvalidationtest-sets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Model selection and training/validation/test sets</h3>
+<ol>
+<li>model selection<ol>
+<li>$ h_\theta(x) = \theta_0 + \theta_1 x $ =&gt; $ \theta^{(1)} $</li>
+<li>$ h_\theta(x) = \theta_0 + \theta_1 x + \theta_2 x^2 $ =&gt; $ \theta^{(2)} $</li>
+<li>$ h_\theta(x) = \theta_0 + \theta_1 x + &hellip; + \theta_3 x^3 $ =&gt; $ \theta^{(3)} $<br />
+&hellip;</li>
+<li>$ h_\theta(x) = \theta_0 + \theta_1 x + &hellip; + \theta_{10} x^{10} $ =&gt; $ \theta^{(10)} $ </li>
+</ol>
+</li>
+</ol>
+<p>这里需要计算 $ J_{test}(\theta^{(i)}) $,choose i，然后用 $ \theta^{(i)} $结合Testset计算各项指标显然不太合适。</p>
+<ol>
+<li>重新分组<br />
+这里引入cross validation<br />
+eg. Training set 60%、cross valalidation set 20%、testset 20%  </li>
+</ol>
+<p>Train/validation/test error<br />
+Train error:<br />
+$$<br />
+J_{train}(\theta) = \frac{1}{2m_{train}}\sum_{i=1}^{m_{train}} (h_\theta(x^{(i)}) - y_{train}^{(i)})^2<br />
+$$<br />
+Cross Valadation error:<br />
+$$<br />
+J_{cv}(\theta) = \frac{1}{2m_{cv}}\sum_{i=1}^{m_{cv}} (h_\theta(x^{(i)}) - y_{cv}^{(i)})^2<br />
+$$<br />
+Test error:<br />
+$$<br />
+J_{test}(\theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}} (h_\theta(x^{(i)}) - y_{test}^{(i)})^2<br />
+$$<br />
+重新计算$ \theta^{(1)}、\theta^{(2)}、&hellip;、\theta^{(10)} $<br />
+Then $ J_{cv}(\theta^{(1)}) $、$ J_{cv}(\theta^{(2)}) $、&hellip;、 $ J_{cv}(\theta^{(10)}) $<br />
+挑选出 $ \theta^{(i)} $<br />
+Estimate generalization error for testset $ J_{test}(\theta^{(i)}) $  </p>
+<p>Note: </p>
+<blockquote>
+<p>有的交叉验证方式是这样的(这种也很常用)<br />
+  这里我们把训练集等分成N分(以N=3为例)<br />
+  假设已经随机分成了三组<br />
+  A+B-&gt;M1 P1(A和B作为trainingset训练出模型M1，用C作为cross validation set作验证，得到某一个项指标P1）<br />
+  A+C-&gt;M2 P2<br />
+  B+C-&gt;M3 P3<br />
+  该指标最终值 P = (P1+P2+P3)/3</p>
+</blockquote>
+<h2 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>决策树</h2>
+<blockquote>
+<p>这一章没有看吴恩达老师的视频，看的是中科院某博士讲的</p>
+</blockquote>
+<h3 id="code"><a name="user-content-code" href="#code" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Code</h3>
+<blockquote>
+<p><a href="https://www.cnblogs.com/pinard/p/6056319.html">参考博客链接</a></p>
+</blockquote>
+<div class="codehilite"><pre><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: UTF-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="c1"># 这里我们使用scikit-learn(sklearn)作为我们机器学习的模块</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets.california_housing</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">import</span> <span class="nn">pydotplus</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="n">house_data</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">()</span>
+<span class="c1"># print(house_data.DESCR)</span>
+
+<span class="c1"># 定义树的最大深度等于2</span>
+<span class="n">dtr</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">dtr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">house_data</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]],</span> <span class="n">house_data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+
+
+<span class="n">dot_data</span> <span class="o">=</span> \
+    <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">dtr</span><span class="p">,</span>
+                         <span class="n">out_file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                         <span class="n">feature_names</span><span class="o">=</span><span class="n">house_data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span>
+                         <span class="n">filled</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                         <span class="n">impurity</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                         <span class="n">rounded</span><span class="o">=</span><span class="bp">True</span>
+                         <span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">pydotplus</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">get_nodes</span><span class="p">()[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">set_fillcolor</span><span class="p">(</span><span class="s">&#39;#FFF2DD&#39;</span><span class="p">)</span>
+<span class="n">img_data</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">create_png</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">img_data</span><span class="p">)))</span>
+<span class="c1"># plt.show()</span>
+<span class="c1"># graph.write_png(&#39;dtr_white_background.png&#39;)</span>
+
+<span class="c1"># 拆分训练集 测试集</span>
+<span class="c1"># 取0.1作为测试集</span>
+<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span><span class="n">target_test</span> <span class="o">=</span> \
+    <span class="n">train_test_split</span><span class="p">(</span><span class="n">house_data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">house_data</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">dtr</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">dtr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dtr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">))</span>
+
+
+<span class="c1"># 使用GridSearchCV帮助我们选择合适参数</span>
+<span class="n">tree_param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)),</span> <span class="s">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">))}</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">RandomForestRegressor</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">tree_param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">grid_scores_</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+</pre></div>
+
+
+<p>运行结果</p>
+<div class="codehilite"><pre>0.637355881715626
+(0.8074196516933743, {&#39;min_samples_split&#39;: 6, &#39;n_estimators&#39;: 100})
+</pre></div>
+
+
+<h2 id="ensemble-learning"><a name="user-content-ensemble-learning" href="#ensemble-learning" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>(Ensemble learning)集成算法</h2>
+<blockquote>
+<p>Note：集成算法并不是机器学习算法的一种，而相当于把很多个机器学习算法拢在一块。</p>
+</blockquote>
+<h3 id="ensemble-learning_1"><a name="user-content-ensemble-learning_1" href="#ensemble-learning_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Ensemble learning介绍</h3>
+<ul>
+<li>Ensemble learning</li>
+<li>目的：让机器学习效果更好，单个不行，那就一群</li>
+<li>Bagging: 训练多个分类器取平均：$ f(x) = \frac{1}{M} \sum_{m=1}^M f_m(x)​$</li>
+<li>Boosting：从弱学习器开始加强，通过加权来进行训练<ul>
+<li>$ F_m(x) = F_{m-1}(x) + argmin_h\sum_{i=1}^n L(y_i,F_{m-1}(x_i)+h(x_i))  ​$ 加入一个数，要比原来强</li>
+</ul>
+</li>
+<li>Stacking:聚合多个分类和回归模型（可以分阶段来做)</li>
+</ul>
+<h3 id="bagging"><a name="user-content-bagging" href="#bagging" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bagging模型</h3>
+<ul>
+<li>全称：bootstrap aggregation(说白了就是并行训练一堆分类器)</li>
+<li>最典型的代表就是随机森林</li>
+<li>随机：数据采样随机(一般取60%-80%，有放回)，特征选择随机（获得一系列随机的树以后对当中特征也按照60%-80%进行采样）</li>
+<li>之所以要进行随机，是要保证泛化能力</li>
+<li>森林：很多决策树并行放在一起</li>
+<li>理论上越多的树效果会越好，但实际上基本超过一定数量就差不多上下浮动了</li>
+</ul>
+<p><img alt="深度截图_选择区域_20190416122403" src="/home/thb/%E6%A1%8C%E9%9D%A2/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20190416122403.png" /></p>
+<h4 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>随机森林优势</h4>
+<ul>
+<li>可以处理很多维度(feature很多)的数据，并且不用做特征选择</li>
+<li>在训练完后，它能够给出哪些feature比较重要</li>
+<li>容易做成并行化方法，速度比较快</li>
+<li>可以进行可视化展示，便于分析</li>
+</ul>
+<h3 id="boosting"><a name="user-content-boosting" href="#boosting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Boosting模型</h3>
+<ul>
+<li>典型代表：AdaBoost，Xgboost</li>
+<li>Adaboost会根据前一次的分类效果调整数据权重</li>
+<li>解释：如果某一个数据在这次分错了，那么下一次就会给他更大的权重</li>
+<li>结果：每个分类器根据自身准确性来确定各自的权重，再合体</li>
+</ul>
+<h3 id="stacking"><a name="user-content-stacking" href="#stacking" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Stacking模型</h3>
+<ul>
+<li>堆叠：很暴力，拿来一堆直接上</li>
+<li>可以堆叠各种各样的分类器（KNN、SVM、RF等）</li>
+<li>分阶段：第一阶段得出各自结果，第二阶段再用前一阶段结果训练</li>
+<li>为了刷结果，不择手段</li>
+</ul>
+<p>堆叠在一起确实能使得准确率得到提升，但是速度是个问题<br />
+集成算法是竞赛与论文神奇，当我们更关注与结果时不妨来试试！</p>
+<h2 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷及神经网络入门</h2>
+<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>传统神经网络问题</h3>
+<ul>
+<li>参数过多<ul>
+<li>举例<ul>
+<li>假设图像大小1000*1000</li>
+<li>假设下一层神经元为10^6</li>
+<li>全连接参数为1000<em>1000</em>10^6 = 10^12 </li>
+<li>容易过拟合，需要更多训练数据</li>
+</ul>
+</li>
+<li>解决方案-局部连接</li>
+<li>
+<ul>
+<li>原理:图像的区域性</li>
+<li>举例<ul>
+<li>图像大小 1000*1000</li>
+<li>下一层神经元为10^6</li>
+<li>局部连接范围为10*10</li>
+<li>全连接参数为10<em>10</em>10^6 = 10^8</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解决方案 参数共享</li>
+<li>
+<ul>
+<li>原理:图像特征与位置无关</li>
+<li>举例<ul>
+<li>图像大小1000*1000</li>
+<li>下一层神经元为10^6</li>
+<li>局部连接范围为10*10</li>
+<li>全链接参数为10*10 = 10^2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积</h3>
+<p>设图像f(x),模板是g(x),然后将模版g(x)在模版中移动,每到一个位置,就把f(x)与g(x)的定义域相交的元素进行乘积并且求和,得出新的图像一点,就是被卷积后的图像. 模版又称为卷积核.卷积核做一个矩阵的形状.<br />
+输出size = 输入size - 卷积核size+(1,1)</p>
+<p>步长的概念:模板在图像上每一次移动的个数。<br />
+定义几个参数:  </p>
+<ul>
+<li>输入图片大小 W×W</li>
+<li>Filter大小 F×F</li>
+<li>步长 S</li>
+<li>padding的像素数 P<br />
+padding是在图像的周围补0<br />
+padding的大小应该是使输出size不变<br />
+输出图片大小为<br />
+$$<br />
+N =\frac{(W − F + 2P )}{S}+1<br />
+$$</li>
+</ul>
+<p>对于多通道图像，卷积Filter维度大小也跟着通道数扩大即可，这样我们就可以得到一个单通道卷积和。那该如何获得多通道的图像卷积呢？此时我们应该是使用多张卷积核。<br />
+多个卷积核的物理含义是提取图像中的多种特征</p>
+<p>Q：卷基层，输入三通道，输出192通道，卷积核大小是3<em>3，问该卷基层有多少参数？<br />
+A：(3</em>(3*3)) * 192 = 5184</p>
+<h3 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>激活函数</h3>
+<p><img alt="1555506603689" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555506603689.png" /></p>
+<p><img alt="1555506652458" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555506652458.png" /></p>
+<h3 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>池化</h3>
+<h4 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>最大化池化</h4>
+<p><img alt="1555507419261" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555507419261.png" /></p>
+<h4 id="_14"><a name="user-content-_14" href="#_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>平均值池化</h4>
+<p><img alt="1555507491980" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555507491980.png" /></p>
+<ul>
+<li>使用时不重叠、不补零</li>
+<li>没有用于求导的参数</li>
+<li>池化层的参数为步长和池化核大小</li>
+<li>用于减小图像尺寸，从而减少计算量</li>
+<li>一定程度解决平移鲁棒性</li>
+</ul>
+<h3 id="_15"><a name="user-content-_15" href="#_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>全连接</h3>
+<ul>
+<li>将上一层输出展开并连接到每一个神经元上</li>
+<li>全连接层之后可以加全连接层，但是不可以加卷积层、池化层</li>
+<li>全连接层即标准神经网络的层</li>
+<li>相比卷积层，参数数目较大，占比比较大</li>
+<li>参数数目 = 输入通道数目*输出通道数目</li>
+</ul>
+<h3 id="_16"><a name="user-content-_16" href="#_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积神经网络结构</h3>
+<ul>
+<li>卷积神经网络=卷积层+池化层+全连接层</li>
+</ul>
+<p><img alt="1555508134770" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555508134770.png" /></p>
+<ul>
+<li>全卷积神经网络=卷积层+池化层</li>
+</ul>
+<p><img alt="1555508283268" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555508283268.png" /></p>
+<h3 id="code_1"><a name="user-content-code_1" href="#code_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Code</h3>
+<p>最刺激的事情来了，如果之前没用过卷积神经网络的话，这里我们使用卷及神经网络对cifar-10图像数据进行分类</p>
+<p>先加上三层隐藏层实现一个标准多层神经网络<br />
+<div class="codehilite"><pre><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding: utf-8</span>
+
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+
+<span class="n">CIFAT_DIR</span> <span class="o">=</span> <span class="s">&#39;../cifar-10-batches-py&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">CIFAT_DIR</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;read data from data file&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="c1"># data = pickle.load(f, encoding=&#39;bytes&#39;)</span>
+
+        <span class="c1"># Python2.7代码</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;labels&#39;</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">CifarData</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">need_shuffle</span><span class="p">):</span>
+        <span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># 关于zip函数 具体看</span>
+        <span class="c1"># http://www.cnblogs.com/frydsh/archive/2012/07/10/2585370.html</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+                <span class="n">all_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                <span class="n">all_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="c1"># 关于 vstack函数</span>
+        <span class="c1"># https://www.cnblogs.com/nkh222/p/8932369.html</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+        <span class="c1"># 归一化处理</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">all_labels</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_need_shuffle</span> <span class="o">=</span> <span class="n">need_shuffle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_need_shuffle</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shuffle_data</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_shuffle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 【0,1,2,3,4】 =&gt; [2,1,3,4,0]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">next_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return batch_size examples as a batch &quot;&quot;&quot;</span>
+        <span class="n">end_indicator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">+</span> <span class="n">batch_size</span>
+        <span class="k">if</span> <span class="n">end_indicator</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_need_shuffle</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_shuffle_data</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">end_indicator</span> <span class="o">=</span> <span class="n">batch_size</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;have no more examples&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">end_indicator</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;batch size is larger than all examles&#39;</span><span class="p">)</span>
+        <span class="n">batch_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span><span class="p">:</span> <span class="n">end_indicator</span><span class="p">]</span>
+        <span class="n">batch_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span><span class="p">:</span> <span class="n">end_indicator</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">=</span> <span class="n">end_indicator</span>
+        <span class="k">return</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">batch_labels</span>
+
+
+<span class="n">train_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CIFAT_DIR</span><span class="p">,</span> <span class="s">&#39;data_batch_</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="n">test_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CIFAT_DIR</span><span class="p">,</span> <span class="s">&#39;test_batch&#39;</span><span class="p">)]</span>
+
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">CifarData</span><span class="p">(</span><span class="n">train_filenames</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">CifarData</span><span class="p">(</span><span class="n">test_filenames</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="c1"># batch_data, batch_labels = train_data.next_batch(10)</span>
+<span class="c1"># print(batch_data,batch_labels)</span>
+
+
+<span class="c1"># None 代表输入样本数是不确定的</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">3072</span><span class="p">])</span>
+<span class="c1"># None</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">])</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"># (3072,10)</span>
+<span class="sd">w = tf.get_variable(&#39;w&#39;, [x.get_shape()[-1], 10], initializer=tf.random_normal_initializer(0, 1))</span>
+<span class="sd"># (10, )</span>
+<span class="sd">b = tf.get_variable(&#39;b&#39;, [10], initializer=tf.constant_initializer(0.0))</span>
+<span class="sd"># [None,3072] *[3072,10] = [None,10]</span>
+<span class="sd">y_ = tf.matmul(x, w) + b</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">hidden1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+<span class="n">hidden2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+<span class="n">hidden3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+
+<span class="c1"># 这里10表示神经元个数 这个函数就等价于上面写的那么多代码</span>
+<span class="n">y_</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+
+<span class="c1"># y_-&gt;softmax</span>
+<span class="c1"># y -&gt; one_hot</span>
+<span class="c1"># loss = ylogy_</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_softmax_cross_entropy</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">logits</span><span class="o">=</span><span class="n">y_</span><span class="p">)</span>
+
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"># [None,10]</span>
+<span class="sd">p_y_1 = tf.nn.sigmoid(y_)</span>
+<span class="sd"># 这里-1参数表示缺省值 保证为1列即可</span>
+<span class="sd">y_reshaped = tf.reshape(y, (-1, 1))</span>
+<span class="sd">y_reshaped_float = tf.cast(y_reshaped, tf.float32)</span>
+<span class="sd"># 计算loss</span>
+<span class="sd">loss = tf.reduce_mean(tf.square(y_reshaped_float - p_y_1))</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># indices</span>
+<span class="n">predict</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">predict</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s">&#39;train_op&#39;</span><span class="p">):</span>
+    <span class="c1"># 这里1e-3是学习率 learning rate AdamOptimizer是梯度下降的一个变种</span>
+    <span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">到此为止我们的计算图搭建完成</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">train_steps</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">test_steps</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">train_steps</span><span class="p">):</span>
+        <span class="n">batch_data</span><span class="p">,</span> <span class="n">batch_labels</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">loss_val</span><span class="p">,</span> <span class="n">accu_val</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">train_op</span><span class="p">],</span>
+            <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">batch_labels</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;[Train] Step: </span><span class="si">%d</span><span class="s">, loss: </span><span class="si">%4.5f</span><span class="s">,acc: </span><span class="si">%4.5f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">loss_val</span><span class="p">,</span> <span class="n">accu_val</span><span class="p">))</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">test_data</span> <span class="o">=</span> <span class="n">CifarData</span><span class="p">(</span><span class="n">test_filenames</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+            <span class="n">all_test_acc_val</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">test_steps</span><span class="p">):</span>
+                <span class="n">test_batch_data</span><span class="p">,</span> <span class="n">test_batch_labels</span> \
+                 <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+                <span class="n">test_acc_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">accuracy</span><span class="p">],</span>
+                    <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
+                        <span class="n">x</span><span class="p">:</span> <span class="n">test_batch_data</span><span class="p">,</span>
+                        <span class="n">y</span><span class="p">:</span> <span class="n">test_batch_labels</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+                <span class="n">all_test_acc_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_acc_val</span><span class="p">)</span>
+            <span class="n">test_acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">all_test_acc_val</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;[Test] Step: </span><span class="si">%d</span><span class="s">, acc: </span><span class="si">%4.5f</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">))</span>
+</pre></div>
+<br />
+然后使用卷积和池化进行图像数据处理，搭建一个简单卷积神经网络<br />
+<div class="codehilite"><pre><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding: utf-8</span>
+
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+
+<span class="n">CIFAT_DIR</span> <span class="o">=</span> <span class="s">&#39;../cifar-10-batches-py&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">CIFAT_DIR</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;read data from data file&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="c1"># data = pickle.load(f, encoding=&#39;bytes&#39;)</span>
+
+        <span class="c1"># Python2.7代码</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;labels&#39;</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">CifarData</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">need_shuffle</span><span class="p">):</span>
+        <span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># 关于zip函数 具体看</span>
+        <span class="c1"># http://www.cnblogs.com/frydsh/archive/2012/07/10/2585370.html</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+                <span class="n">all_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                <span class="n">all_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="c1"># 关于 vstack函数</span>
+        <span class="c1"># https://www.cnblogs.com/nkh222/p/8932369.html</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+        <span class="c1"># 归一化处理</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">all_labels</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_need_shuffle</span> <span class="o">=</span> <span class="n">need_shuffle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_need_shuffle</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shuffle_data</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_shuffle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 【0,1,2,3,4】 =&gt; [2,1,3,4,0]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">next_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return batch_size examples as a batch &quot;&quot;&quot;</span>
+        <span class="n">end_indicator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">+</span> <span class="n">batch_size</span>
+        <span class="k">if</span> <span class="n">end_indicator</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_need_shuffle</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_shuffle_data</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">end_indicator</span> <span class="o">=</span> <span class="n">batch_size</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;have no more examples&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">end_indicator</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_examples</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;batch size is larger than all examles&#39;</span><span class="p">)</span>
+        <span class="n">batch_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span><span class="p">:</span> <span class="n">end_indicator</span><span class="p">]</span>
+        <span class="n">batch_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span><span class="p">:</span> <span class="n">end_indicator</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indicator</span> <span class="o">=</span> <span class="n">end_indicator</span>
+        <span class="k">return</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">batch_labels</span>
+
+
+<span class="n">train_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CIFAT_DIR</span><span class="p">,</span> <span class="s">&#39;data_batch_</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="n">test_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CIFAT_DIR</span><span class="p">,</span> <span class="s">&#39;test_batch&#39;</span><span class="p">)]</span>
+
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">CifarData</span><span class="p">(</span><span class="n">train_filenames</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">CifarData</span><span class="p">(</span><span class="n">test_filenames</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="c1"># batch_data, batch_labels = train_data.next_batch(10)</span>
+<span class="c1"># print(batch_data,batch_labels)</span>
+
+
+<span class="c1"># None 代表输入样本数是不确定的</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">3072</span><span class="p">])</span>
+<span class="c1"># None</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">])</span>
+
+<span class="c1"># -1代表缺省 实际上x的维度应该理解为4维</span>
+<span class="n">x_image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
+<span class="n">x_image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x_image</span><span class="p">,</span> <span class="n">perm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># 卷积层</span>
+<span class="c1"># conv1 ：神经元图、feature_map、输出图像</span>
+<span class="c1"># padding = &#39;same|valid&#39; same即使用padding</span>
+<span class="c1"># 32*32</span>
+<span class="n">conv1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">x_image</span><span class="p">,</span>
+                        <span class="mi">32</span><span class="p">,</span> <span class="c1"># 表示输出空间的维数（即卷积过滤器的数量）</span>
+                        <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">padding</span> <span class="o">=</span> <span class="s">&#39;same&#39;</span><span class="p">,</span>
+                        <span class="n">activation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
+                        <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;conv1&#39;</span><span class="p">)</span>
+<span class="c1"># 16 * 16</span>
+<span class="n">pooling1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span><span class="n">conv1</span><span class="p">,</span>
+                                   <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># kernel size</span>
+                                   <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># stride 表示卷积的纵向和横向的步长</span>
+                                   <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;pool1&#39;</span><span class="p">)</span>
+
+<span class="n">conv2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">pooling1</span><span class="p">,</span>
+                        <span class="mi">32</span><span class="p">,</span>
+                        <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">padding</span> <span class="o">=</span> <span class="s">&#39;same&#39;</span><span class="p">,</span>
+                        <span class="n">activation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
+                        <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;conv2&#39;</span><span class="p">)</span>
+<span class="c1"># 8 * 8</span>
+<span class="n">pooling2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span><span class="n">conv2</span><span class="p">,</span>
+                                   <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># kernel size</span>
+                                   <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># stride</span>
+                                   <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;pool2&#39;</span><span class="p">)</span>
+
+<span class="n">conv3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">pooling2</span><span class="p">,</span>
+                        <span class="mi">32</span><span class="p">,</span>
+                        <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+                        <span class="n">padding</span> <span class="o">=</span> <span class="s">&#39;same&#39;</span><span class="p">,</span>
+                        <span class="n">activation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
+                        <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;conv3&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4 * 4* 32</span>
+<span class="n">pooling3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span><span class="n">conv3</span><span class="p">,</span>
+                                   <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># kernel size</span>
+                                   <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="c1"># stride</span>
+                                   <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;pool3&#39;</span><span class="p">)</span>
+<span class="c1"># [None,4*4*32]</span>
+<span class="n">flatten</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">pooling3</span><span class="p">)</span>
+
+
+
+<span class="c1"># 这里10表示神经元个数 这个函数就等价于上面写的那么多代码</span>
+<span class="n">y_</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">flatten</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+
+<span class="c1"># y_-&gt;softmax</span>
+<span class="c1"># y -&gt; one_hot</span>
+<span class="c1"># loss = ylogy_</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_softmax_cross_entropy</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">logits</span><span class="o">=</span><span class="n">y_</span><span class="p">)</span>
+
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"># [None,10]</span>
+<span class="sd">p_y_1 = tf.nn.sigmoid(y_)</span>
+<span class="sd"># 这里-1参数表示缺省值 保证为1列即可</span>
+<span class="sd">y_reshaped = tf.reshape(y, (-1, 1))</span>
+<span class="sd">y_reshaped_float = tf.cast(y_reshaped, tf.float32)</span>
+<span class="sd"># 计算loss</span>
+<span class="sd">loss = tf.reduce_mean(tf.square(y_reshaped_float - p_y_1))</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># indices</span>
+<span class="n">predict</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">predict</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s">&#39;train_op&#39;</span><span class="p">):</span>
+    <span class="c1"># 这里1e-3是学习率 learning rate AdamOptimizer是梯度下降的一个变种</span>
+    <span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">到此为止我们的计算图搭建完成</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">train_steps</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">test_steps</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">train_steps</span><span class="p">):</span>
+        <span class="n">batch_data</span><span class="p">,</span> <span class="n">batch_labels</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">loss_val</span><span class="p">,</span> <span class="n">accu_val</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">train_op</span><span class="p">],</span>
+            <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch_data</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">batch_labels</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;[Train] Step: </span><span class="si">%d</span><span class="s">, loss: </span><span class="si">%4.5f</span><span class="s">,acc: </span><span class="si">%4.5f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">loss_val</span><span class="p">,</span> <span class="n">accu_val</span><span class="p">))</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">test_data</span> <span class="o">=</span> <span class="n">CifarData</span><span class="p">(</span><span class="n">test_filenames</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+            <span class="n">all_test_acc_val</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">test_steps</span><span class="p">):</span>
+                <span class="n">test_batch_data</span><span class="p">,</span> <span class="n">test_batch_labels</span> \
+                 <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+                <span class="n">test_acc_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">accuracy</span><span class="p">],</span>
+                    <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
+                        <span class="n">x</span><span class="p">:</span> <span class="n">test_batch_data</span><span class="p">,</span>
+                        <span class="n">y</span><span class="p">:</span> <span class="n">test_batch_labels</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+                <span class="n">all_test_acc_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_acc_val</span><span class="p">)</span>
+            <span class="n">test_acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">all_test_acc_val</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;[Test] Step: </span><span class="si">%d</span><span class="s">, acc: </span><span class="si">%4.5f</span><span class="s"> &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">))</span>
+</pre></div>
+</p>
+<h2 id="_17"><a name="user-content-_17" href="#_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>卷积神经网络进阶</h2>
+<h3 id="_18"><a name="user-content-_18" href="#_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>不同网络结构</h3>
+<ul>
+<li>不同的网络结构解决的问题不同</li>
+<li>不同的网络结构使用的技巧不同</li>
+<li>不同的网络结构应用的场景不同</li>
+</ul>
+<h3 id="_19"><a name="user-content-_19" href="#_19" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模型的进化</h3>
+<ul>
+<li>更深更宽 - AlexNex到VGGNet</li>
+<li>不同的模型结构 - VGG到Inception/ResNet</li>
+<li>优势组合-Inception+Res = InceptionResNet</li>
+<li>自我学习-NASNet</li>
+<li>实用-MobileNet</li>
+</ul>
+<h3 id="alexnet"><a name="user-content-alexnet" href="#alexnet" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>AlexNet</h3>
+<h4 id="_20"><a name="user-content-_20" href="#_20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>网络结构</h4>
+<p><img alt="1555551101297" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555551101297.png" /></p>
+<h4 id="_21"><a name="user-content-_21" href="#_21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一个卷积层</h4>
+<ul>
+<li>输入224*224</li>
+<li>Stride = 4,卷积核 11*11</li>
+<li>输出大小=(输出大小-卷积核+padding)/stride + 1 = 55</li>
+<li>参数数目 = 3<em>(11</em>11)*96 = 35K</li>
+</ul>
+<h4 id="relu"><a name="user-content-relu" href="#relu" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>首次使用Relu</h4>
+<p><img alt="1555551314221" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555551314221.png" /></p>
+<h4 id="_22"><a name="user-content-_22" href="#_22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>特点</h4>
+<ul>
+<li>2-GPU并行结构</li>
+<li>1，2，5卷积层后跟随max-pooling层</li>
+<li>两个全连接层上使用了dropout技术<ul>
+<li>dropout：计算当前层某个神经元时，随机把上层某个神经元输出的值屏蔽为0</li>
+<li>全连接层参数站全部参数数目的大部分，容易过拟合‘</li>
+</ul>
+</li>
+<li>Batch size = 128</li>
+<li>SGD momentum = 0.9</li>
+<li>Learing rate = 0.01，过一定次数后下降为原来的1/10</li>
+<li>7个CNN做ensemble：18.2%-&gt;15.4%</li>
+</ul>
+<h3 id="vggnet"><a name="user-content-vggnet" href="#vggnet" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>VGGNET</h3>
+<h4 id="_23"><a name="user-content-_23" href="#_23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>网络结构</h4>
+<ul>
+<li>更深</li>
+<li>多使用3x3的卷积核<ul>
+<li>2个3x3的卷积层可以看做一层5x5的卷积层</li>
+<li>3个3x3的卷积层可以看做一层7x7的卷积层</li>
+</ul>
+</li>
+<li>1x1的卷积层可以看做是非线性变化</li>
+<li>每次经过一个pooling层，通道数目翻倍</li>
+</ul>
+<h4 id="_24"><a name="user-content-_24" href="#_24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>视野域</h4>
+<ul>
+<li>视野域：2个3x3 = 1个5x5</li>
+<li>2层比1层更多一次非线性变换</li>
+<li>参数降低28%<br />
+<img alt="1555555875364" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555555875364.png" /></li>
+</ul>
+<h4 id="_25"><a name="user-content-_25" href="#_25" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>技巧</h4>
+<ul>
+<li>先训练浅层网络，再利用浅层网络参数去训练深层网络</li>
+<li>多尺度输入<ul>
+<li>不同的尺度训练多个分类器，然后做ensemble</li>
+<li>随机使用不同的Feature Scaling然后输入进分类器进行训练</li>
+</ul>
+</li>
+</ul>
+<h3 id="resnet"><a name="user-content-resnet" href="#resnet" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Resnet</h3>
+<p>问题抛出  :模型深度达到某个程度后继续加深会导致训练集准确率下降<br />
+<img alt="1555568710543" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555568710543.png" /><br />
+<img alt="1555568792285" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555568792285.png" /></p>
+<h4 id="_26"><a name="user-content-_26" href="#_26" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>加深层次的问题解决</h4>
+<ul>
+<li>
+<p>假设：深层网络更难优化而非深层网络学不到东西</p>
+<ul>
+<li>深层网络至少可以和浅层网络持平</li>
+<li>y=x,虽然增加了深度，但是误差不会增加<br />
+因此，ResNet采用了这样一种结构  </li>
+</ul>
+</li>
+<li>
+<p>Identity部分是恒等变换</p>
+</li>
+<li>F(x)是残差学习</li>
+</ul>
+<p><img alt="1555569155117" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555569155117.png" /></p>
+<h4 id="_27"><a name="user-content-_27" href="#_27" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模型结构</h4>
+<ul>
+<li>Resnet-34 与 Resnet-101使用的子结构<br />
+<img alt="1555569365936" src="/home/thb/Documents/PyCode/machine_learning/week02/assets/1555569365936.png" /></li>
+<li>先使用一个普通的卷积层，stride = 2</li>
+<li>再经过一个3x3的max_pooling</li>
+<li>再经过残差结构</li>
+<li>没有中间的全连接层，直接到输出</li>
+<li>残差结构使得网络需要学习的知识变少，容易学习</li>
+<li>残差结构使得每一层的数据分布接近，容易学习</li>
+</ul></article></body></html>

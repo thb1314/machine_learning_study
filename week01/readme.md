@@ -16,6 +16,27 @@
 >     或者您也可以下载我上传到github上的pdf
 *[Mathjax开源项目地址](https://github.com/mathjax/MathJax)*
 
+## 绪论
+
+### 机器学习简介
+机器学习是一种将无序数据转换为价值的方法。  
+机器学习的价值-从数据中抽取规律，并用来预测未来
+
+### 机器学习应用举例
+
+- 分类问题-图像识别、垃圾邮件识别
+- 回归问题-股价预测、房价预测
+- 排序问题-点击率预估、推荐
+- 生成问题-图像生成、图像风格转换、图像文字描述生成
+
+### 机器学习的应用流程
+![1555427506968](assets/1555427506968.png)
+
+### 机器学习岗位职责
+- 数据处理(采集+去噪)
+- 模型训练(特征+模型)
+- 模型评估与优化(MSE、F1-score、AUC+调参)
+- 模型应用(A/B测试)
 
 ## 线性回归(Linear regression)
 cost function:
@@ -25,7 +46,17 @@ $$
 来源于假设误差 $  \varepsilon_i  $ 服从正态分布，然后对参数$  \theta  $进行极大似然估计，经过运算后得出$  J(\theta)  $取最小时，似然函数最大，从而推出这个式子。  
 此外，对这个$  J(\theta)  $求偏导，令其偏导数为0（这里涉及到矩阵偏导数计算），即可得到正规方程(normal equation)。
 
-## 梯度下降法的Python实现
+## 梯度下降法
+
+
+### 分类
+- mini-batch
+- batch
+- random
+- SGD(动量梯度下降，有助于解决局部最值和鞍点问题)
+
+### Code
+
 参考代码，自己就一些细节进行优化  
 (https://www.cnblogs.com/focusonepoint/p/6394339.html)
 
@@ -715,7 +746,7 @@ $$
 | Machine translation| RNN |
 | Autonomous driving | hybrid neural network + custum nerual network|
 
-#### Conceopts
+#### Concepts
 
 - Structured Data
 	- Data in the database(have rows and cols)
@@ -724,6 +755,9 @@ $$
 	- Audio、Image、Text
 	- 一般是连续的、无组织结构的
 
+### 神经元
+
+![img](assets/673793-20151219153856802-307732621.jpg)
 
 ### Layer
 
@@ -737,6 +771,11 @@ $$
 
 ![神经元模型](https://upload-images.jianshu.io/upload_images/9602672-75c1a75ecbf72943.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/287/format/webp '神经元模型')
 
+Note:
+>	如果没有隐藏层，只有输入层和输出层，那么我们将这种神经网络称为“感知器”（Perceptron）
+>	在“感知器”中，有两个层次。分别是输入层和输出层。输入层里的“输入单元”只负责传输数据，不做计算。输出层里的“输出单元”则需要对前面一层的输入进行计算。
+>	感知器只能做简单的线性分类任务,对XOR（异或）这样的简单分类任务无法解决。
+
 Definations:  
 1. $  a_i^{(j)}  $:"activation" of unit i in layer j
 2. $  \theta^{(j)}  $:matrix of weights controlling function mapping from $  layer_j  $ to $  layer_{j+1}  ​$
@@ -749,7 +788,7 @@ a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2
 a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3 ) \\\\
 a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3 ) \\\\
 \\\\
-h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0 + \theta_{11}^{(2)}a_1 + \theta_{12}^{(2)}a_2 + \theta_{13}^{(2)}a_3 ) 
+h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0 + \theta_{11}^{(2)}a_1 + \theta_{12}^{(2)}a_2 + \theta_{13}^{(2)}a_3 )
 $$
 
 ### Forward propagation
@@ -796,11 +835,12 @@ $$
 h_\theta(x) \in \mathbf{R}^K
 $$
 $$
- \lgroup h_\theta(x) \rgroup_{i} = i^{th} output
+\lgroup h_\theta(x) \rgroup_{i} = i^{th} output
 $$
 那么在神经网络中，cost function定义为  
 $$
-J(\theta) = -\frac{1}{m}[\sum_{i=1}^{m} \sum_{k=1}^{K} y_k^{(i)} \log(\lgroup h_\theta(x^{(i)}) \rgroup_k) + (1-y_k^{(i)}) \log(1- \lgroup h_\theta(x^{(i)}) \rgroup_k) ] + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{j=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\theta_{ji}^{(l)})^2
+J(\theta) = -\frac{1}{m}[\sum_{i=1}^{m} \sum_{k=1}^{K} y_k^{(i)} \log(\lgroup h_\theta(x^{(i)}) \rgroup_k) + (1-y_k^{(i)}) \log(1- \lgroup h_\theta(x^{(i)}) \rgroup_k) ] + \\\\
+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{j=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\theta_{ji}^{(l)})^2
 $$
 
 >	Note:
@@ -809,6 +849,7 @@ $$
 3. $ j= 1 \to s_{j+1}  $  表示全部行
 
 ### Backpropagetion algorithm(反向传播算法)
+如果看不懂可以借鉴 [Blog链接](https://blog.csdn.net/Chenyukuai6625/article/details/74304992)
 
 1. Forward propagation
 $$
@@ -823,23 +864,27 @@ $$
 \end{align}
 $$
 2. 为了计算导数项，引入Back propagation algorithm  
-Intuition: $ \delta^{(l)} = "error"\ of\ node\ j\ in\ layer\ l $ 
+Intuition: $ \delta^{(l)} = "error"\ of\ node\ j\ in\ layer\ l ​$ 
 $$
 \delta^{(l)} = \frac{\delta}{\delta z_j^{(l)}} cost(i) \\\\
-cost(i) = y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(h_\theta(x^{(i)}))
+eg.\ cost(i) = y^{(i)}log(h_\theta(z^{(i)}))+(1-y^{(i)})log(h_\theta(z^{(i)})) \\\\
 $$
+直观理解
+
+![1555498198927](assets/1555498198927.png)
+
 Example:  
 For each output unit(layer L = 4)  
 $$
-\delta_j^{(4)} = a_j^{(4)} = y_j \ (a_j^{(4)} = h_\theta(x)_j) \\\\ 
+\delta_j^{(4)} = a_j^{(4)} - y_j \ (a_j^{(4)} = h_\theta(x)_j) \\\\ 
 \delta_j^{(3)} = (\theta^{(3)})^T \delta^{(4)}\ .*\ g'(z^{(3)}) \\\\
 \delta_j^{(2)} = (\theta^{(2)})^T \delta^{(3)}\ .*\ g'(z^{(2)}) \\\\
-g'(z^{(3)}) = a^{(3)}\ .*\ (1-a^{(3)}) 
+g'(z^{(3)}) = a^{(3)}\ .*\ (1-a^{(3)})
 $$
 
 Step:  
-Training set $ {(x^{(1)},y^{(1)}),(x^{(2)},y^{(21)}),...,(x^{(m)},y^{(m)})} $  
-Set $ \Delta_{ij}^{(l)} = 0 \ (for\ all l,i,j) $ (use to compute $ \frac{\delta}{\delta\theta_{ij}^{(l)}}J(\theta) $)
+Training set $ {(x^{(1)},y^{(1)}),(x^{(2)},y^{(21)}),...,(x^{(m)},y^{(m)})} ​$  
+Set $ \Delta_{ij}^{(l)} = 0 \ (for\ all\ l,i,j) ​$ (use to compute $ \frac{\delta}{\delta\theta_{ij}^{(l)}}J(\theta) ​$)
 
 For i = 1 to m  
 set $ a^{(1)} = x^{(i)} ​$  
@@ -1081,6 +1126,8 @@ with tf.Session() as sess:
 
 Process finished with exit code 0
 ```
+
+#### version 2
 
 这里我们继续使用该算法实现多分类器
 
