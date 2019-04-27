@@ -228,3 +228,69 @@ a = \max(0.01z,z)
 $$
 
 ![1556255621790](assets/1556255621790.png)
+
+
+
+### Derivation of activation function
+
+1. sigmoid
+$$
+g(z) = \frac{1}{1 + e^{-z}} \\\\
+g'(z) = \frac{1}{1 + e^{-z}}\frac{e^{-z}}{1+e^{-z}} = \frac{1}{1 + e^{-z}}(1 - \frac{1}{1 + e^{-z}}) = g(z)(1-g(z))
+$$
+
+2. tanh
+$$
+g(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}} \\\\
+g'(z) = 1 - (g(z))^2
+$$
+
+3. ReLU
+当z<0,$ g'(z) $ = 0  
+当z>=0,$ g'(z) $ = 1
+
+### Gradient descent for neural networks
+以之前的2 Layer NN为例 
+Paramters: $ w^{[1]}、b^{[1]}、w^{[2]}、b^{[2]} $  
+cost funciton: $ J(w^{[1]},b^{[1]},w^{[2]},b^{[2]}) = \frac{1}{m}\sum_{i=1}^{m}h(\hat y,y) $
+
+在执行梯度下降运算时，有这样几个参数需要注意：
+$$
+dw^{[1]} = \frac {\partial J}{\partial w^{[1]}} \\\\
+db^{[1]} = \frac {\partial J}{\partial b^{[1]}} \\\\
+dw^{[2]} = \frac {\partial J}{\partial w^{[2]}} \\\\
+db^{[2]} = \frac {\partial J}{\partial b^{[2]}} \\\\
+$$
+关键在这些参数如何去求得，下面先给出这类公式：
+我们先给出Forward Propagation的例子  
+$$
+Z^{[1]} = W^{[1]}X + b^{[1]} \\\\
+A^{[1]} = g^{[1]}(Z^{[1]}) \\\\
+Z^{[2]} = W^{[2]}A^{[1]} + b^{[2]} \\\\
+A^{[2]} = g^{[2]}(Z^{[2]})
+$$
+然后写出Back Propagation：  
+$$
+dZ^{[2]} = A^{[2]} - Y (\text{Y是1xm的矩阵 }) \\\\
+dW^{[2]} = \frac{1}{m} dZ^{[2]} (A^{[1]})^T \\\\
+db^{[2]} = \frac {1}{m} np.sum(dZ^{[2]},axis = 1,keepdims = True) \\\\
+dZ^{[1]} = (W^{[2]})^T dZ^{[2]} .\times g^{[1]}{'}(Z^{[1]}) (\text{这里的点乘表示矩阵里的每个对应元素相乘}) \\\\
+dW^{[1]} = \frac{1}{m} dZ^{[1]} X^T \\\\
+db^{[1]} = \frac {1}{m} np.sum(dZ^{[1]},axis = 1,keepdims = True)
+$$
+
+![1556362826190](assets/1556362826190.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
